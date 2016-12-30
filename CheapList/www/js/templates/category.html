@@ -1,0 +1,18 @@
+<ion-view view-title="category">
+<ion-content padding="true">
+
+<div class="list">
+  <a ng-repeat="category in categorys" class="item item-thumbnail-left" ng-href="#/product">
+      <img ng-src="{{category.pict}}"/> 
+      <h2>{{category.description}}</h2>
+      <p>{{category.id}}</p>
+  </a>
+</div>
+
+</ion-content>
+</ion-view>
+
+
+
+
+     

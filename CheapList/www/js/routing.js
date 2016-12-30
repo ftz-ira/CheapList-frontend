@@ -1,0 +1,34 @@
+'use strict';
+
+var cacheActive =  false;
+
+app.config(function ($stateProvider){
+
+	
+	$stateProvider.state('homepage',{
+	 	cache: cacheActive,
+	 	url: '/',
+	 	templateUrl: 'js/templates/homepage.html',
+	 	controller: 'homepage'
+	 })
+
+	$stateProvider.state('section',{
+	 	cache: cacheActive,
+	 	url: '/section',
+	 	templateUrl: 'js/templates/section.html',
+	 	controller: 'section',
+	 })
+	$stateProvider.state('category',{
+	 	cache: cacheActive,
+	 	url: '/category/:categoryId',
+	 	templateUrl: 'js/templates/category.html',
+	 	controller: 'category'
+	 })
+	$stateProvider.state('product',{
+	 	cache: cacheActive,
+	 	url: '/product',
+	 	templateUrl: 'js/templates/product.html',
+	 	//controller: 'category'
+	 })
+	 
+});

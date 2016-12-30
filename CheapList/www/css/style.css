@@ -1,1 +1,13 @@
 /* Empty. Add your own CSS if you like */
+.flexList{
+	flex-wrap: wrap;
+}
+/**.left{
+	float:left;
+}**/
+.right{
+	float:right;
+}
+.qut{
+
+}

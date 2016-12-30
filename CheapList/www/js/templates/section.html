@@ -1,0 +1,22 @@
+<ion-view view-title="Rayon">
+<ion-content padding="true" >
+
+<div class="list">
+
+
+  <label class="item item-input">
+    <input type="text" placeholder="Nom de la liste">
+  </label>
+
+  <div class="item item-divider"></div>
+  
+
+  <a ng-repeat="section in sections" class="item item-thumbnail-left" href="#" ng-href="#/category/{{section.id}}">
+      <img ng-src="{{section.pict}}">
+      <h2>{{section.description}}</h2>
+      <p>{{section.id}}</p>
+    </a>
+</div>
+
+</ion-content>
+</ion-view>
