@@ -12,8 +12,9 @@
   
 
   <a ng-repeat="section in sections" class="item item-thumbnail-left" href="#" ng-href="#/category/{{section.id}}">
-      <img ng-src="{{section.pict}}">
-      <h2>{{section.description}}</h2>
+      <!-- img ng-src="{{section.pict}}" -->
+      <h2>{{section.name}}</h2>
+      <h3>{{section.description}}</h3>
       <p>{{section.id}}</p>
     </a>
 </div>

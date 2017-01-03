@@ -1,8 +1,23 @@
 'use strict';
 
-app.controller('section',function($scope){
+app.controller('section',function($scope,$http){
 
-	$scope.sections = 
+	var url = 'http://192.168.0.47:8080/cheaplist/section/gets/';
+
+			$http.get(url)
+			.success(function(response){
+				
+				if(response){
+					$scope.sections = response
+
+					//console.log(response.data);
+					console.log(response);
+					}else{
+						console.log("fail");
+				}
+		})
+
+	/*$scope.sections = 
 	[{
 			"name": "produit frais",
 			"category":{
@@ -24,8 +39,9 @@ app.controller('section',function($scope){
 			"description" : " Rayon boites de conserve",
 			"id" : "2",
 			"pict": "http://placehold.it/140x100"
-	}]
+	}]*/
 })
+
 app.controller('SetListName', function(){
 	
 })

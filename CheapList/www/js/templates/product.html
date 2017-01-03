@@ -7,26 +7,22 @@
 		<img ng-src="{{ item.image }}">
 		<h2></h2>
 	</a>-->
-  
-    
-    
-
 
 <a class="item item-thumbnail-left" href="#">
   
   <img src="http://placehold.it/140x100">
-  <h2>Cammenbert</h2>
-  <p>marque : le petit</p>
+  <h2>Camembert</h2>
+  <p>le petit</p>
   <div class="right">
     <span class="qut">quantité : <span>2</span></span>
-    <div class="button button-balanced button-small"><i class="ion-chevron-up"></i></div>
-    <div class="button button-balanced button-small"><i class="ion-chevron-down"></i></div>
+    <div class="button button-balanced button-small" ng-click="setQuantity(+1)"><i class="ion-chevron-up"></i></div>
+    <div class="button button-balanced button-small" ng-click="setQuantity(-1)"><i class="ion-chevron-down"></i></div>
   </div>
 </a>
 
 <a class="item item-thumbnail-left" href="#">
   <img src="http://placehold.it/140x100">
-  <h2>Cammenbert</h2>
+  <h2>Camembert</h2>
   <p>président</p>
 </a>
 <a class="item item-thumbnail-left" href="#">
