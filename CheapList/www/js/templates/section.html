@@ -8,14 +8,14 @@
     <input type="text" placeholder="Nom de la liste">
   </label>
 
-  <div class="item item-divider"></div>
+  <div class="item item-divider">divider</div>
   
 
   <a ng-repeat="section in sections" class="item item-thumbnail-left" href="#" ng-href="#/category/{{section.id}}">
       <!-- img ng-src="{{section.pict}}" -->
       <h2>{{section.name}}</h2>
       <h3>{{section.description}}</h3>
-      <p>{{section.id}}</p>
+      <h3>{{section.id}}</h3>
     </a>
 </div>
 

@@ -1,9 +1,11 @@
 'use strict';
 
-app.controller('setQuantity',function($scope){
+app.controller('product',function($scope){
 
-	$scope.setQuantity = function(value){
-     
-     };
+	
+	$scope.setQuantity = function(){
+
+		console.log("ici");	
+	};
 	
 })

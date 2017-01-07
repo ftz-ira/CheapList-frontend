@@ -1,21 +1,10 @@
 'use strict';
 
-app.controller('section',function($scope,$http){
+app.controller('sectionList',function($scope,sectionProvider){
 
-	var url = 'http://192.168.0.47:8080/cheaplist/section/gets/';
+	
 
-			$http.get(url)
-			.success(function(response){
-				
-				if(response){
-					$scope.sections = response
-
-					//console.log(response.data);
-					console.log(response);
-					}else{
-						console.log("fail");
-				}
-		})
+			$scope.sections = sectionProvider.getSections();
 
 	/*$scope.sections = 
 	[{
@@ -43,5 +32,8 @@ app.controller('section',function($scope,$http){
 })
 
 app.controller('SetListName', function(){
+	
+})
+app.controller('SetList',function(){
 	
 })
