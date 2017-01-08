@@ -20,9 +20,9 @@ app.config(function ($stateProvider){
 	 })
 	$stateProvider.state('category',{
 	 	cache: cacheActive,
-	 	url: '/category/:categoryId',
+	 	url: '/category/:sectionId',
 	 	templateUrl: 'js/templates/category.html',
-	 	controller: 'category'
+	 	controller: 'categories'
 	 })
 	$stateProvider.state('product',{
 	 	cache: cacheActive,
