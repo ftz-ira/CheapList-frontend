@@ -1,4 +1,31 @@
 'use strict';
+var sections = null;
+app.service('sectionProvider',function($http){
+
+
+	this.getSections = function(){
+
+		var url = 'http://localhost:8080/cheaplist/sections/';
+		//var sections = null;
+		$http.get(url).success(function(response){
+
+			if(response){
+
+				var sections = response;
+				
+				console.log("ok");
+				
+			}else{
+				console.log("fail");
+			}	
+			return sections;
+			//console.log(sections);
+		})
+
+		
+	}
+
+});
 
 /*	[{
 			"name": "produit frais",
@@ -24,29 +51,3 @@
 			"pict": "http://placehold.it/140x100",
 			"img_url":"img/section-img/epicerie_salee.jpeg"
 	}];*/
-
-app.service('sectionProvider',function($http){
-
-
-	this.getSections = function(){
-
-		var url = 'http://localhost:8080/cheaplist/sections/';
-		var sections = null;
-		$http.get(url).success(function(response){
-
-			if(response){
-
-				sections = response;
-		
-				console.log("ok");
-				
-			}else{
-				console.log("fail");
-			}
-			return sections;
-			
-		})
-	}
-
-
-});
