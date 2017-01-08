@@ -1,6 +1,6 @@
 'use strict';
-var sections = 
-	[{
+
+/*	[{
 			"name": "produit frais",
 			"category":{
 				"fromage": "fromage",
@@ -23,28 +23,30 @@ var sections =
 			"id" : "2",
 			"pict": "http://placehold.it/140x100",
 			"img_url":"img/section-img/epicerie_salee.jpeg"
-	}];
+	}];*/
 
 app.service('sectionProvider',function($http){
 
+
 	this.getSections = function(){
 
-		/*var url = 'http://localhost:8080/cheaplist/sections/';
-
-		$http.get(url)
-		.success(function(response){
+		var url = 'http://localhost:8080/cheaplist/sections/';
+		var sections = null;
+		$http.get(url).success(function(response){
 
 			if(response){
 
-				sections = response
-
-				console.log(response);
+				sections = response;
+		
+				console.log("ok");
+				
 			}else{
 				console.log("fail");
 			}
-		})*/
-
-		return sections ;
+			return sections;
+			
+		})
 	}
+
 
 });
