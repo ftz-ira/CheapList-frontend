@@ -30,5 +30,19 @@ app.config(function ($stateProvider){
 	 	templateUrl: 'js/templates/product.html',
 	 	controller: 'category'
 	 })
+
+	$stateProvider.state('checkshop',{
+	 	cache: cacheActive,
+	 	url: '/checkshop',
+	 	templateUrl: 'js/templates/checkshop.html'
+	 	
+	 })
+
+	$stateProvider.state('shopgrid',{
+	 	cache: cacheActive,
+	 	url: '/shopgrid',
+	 	templateUrl: 'js/templates/shopgrid.html'
+	 	
+	 })
 	 
 });
