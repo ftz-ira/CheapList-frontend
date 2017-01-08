@@ -16,7 +16,7 @@ app.config(function ($stateProvider){
 	 	cache: cacheActive,
 	 	url: '/section',
 	 	templateUrl: 'js/templates/section.html',
-	 	controller: 'section',
+	 	controller: 'sectionList',
 	 })
 	$stateProvider.state('category',{
 	 	cache: cacheActive,
@@ -28,7 +28,7 @@ app.config(function ($stateProvider){
 	 	cache: cacheActive,
 	 	url: '/product',
 	 	templateUrl: 'js/templates/product.html',
-	 	//controller: 'category'
+	 	controller: 'category'
 	 })
 	 
 });
