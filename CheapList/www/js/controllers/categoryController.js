@@ -5,7 +5,7 @@ app.controller('categories',function($scope, $stateParams,$http){
 	
      //console.log($stateParams.sectionId);
      
-     var url = 'http://localhost:8080/cheaplist/categories/'+$stateParams.sectionId;
+     var url = 'http://localhost:8080/cheaplist/sections/'+$stateParams.sectionId+'/categories/';
 		var categories = null;
 		$http.get(url).success(function(response){
 
