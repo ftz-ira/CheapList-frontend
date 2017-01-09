@@ -26,9 +26,9 @@ app.config(function ($stateProvider){
 	 })
 	$stateProvider.state('product',{
 	 	cache: cacheActive,
-	 	url: '/product',
+	 	url: '/product/:categoryId',
 	 	templateUrl: 'js/templates/product.html',
-	 	controller: 'category'
+	 	controller: 'product'
 	 })
 
 	$stateProvider.state('checkshop',{

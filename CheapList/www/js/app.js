@@ -15,6 +15,6 @@ var app = angular.module('cheapList', ['ionic']).run(function($ionicPlatform,$lo
       StatusBar.styleDefault();
     }*/
 
-    $location.path('/section');
+    $location.path('/');
   });
 })

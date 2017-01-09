@@ -1,5 +1,5 @@
 'use strict';
-var sections = null;
+
 app.service('sectionProvider',function($http){
 
 
@@ -7,22 +7,21 @@ app.service('sectionProvider',function($http){
 
 		var url = 'http://localhost:8080/cheaplist/sections/';
 		//var sections = null;
-		$http.get(url).success(function(response){
-
-			if(response){
-
-				var sections = response;
-				
-				console.log("ok");
-				
-			}else{
-				console.log("fail");
-			}	
-			return sections;
-			//console.log(sections);
-		})
-
 		
+		return $http.get(url).then(
+			function(response) {
+				if(response){
+					var sections = response;
+					
+					console.log("ok");
+					
+				}else{
+					console.log("fail");
+				}
+				console.log( sections);
+				return sections;
+			}
+		)
 	}
 
 });
