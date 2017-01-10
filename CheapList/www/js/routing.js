@@ -2,9 +2,9 @@
 
 var cacheActive =  false;
 
-app.config(function ($stateProvider){
+app.config(function ($stateProvider,  $locationProvider){
 
-	
+	  $locationProvider.html5Mode(true).hashPrefix('!');	
 	$stateProvider.state('homepage',{
 	 	cache: cacheActive,
 	 	url: '/',
@@ -14,7 +14,7 @@ app.config(function ($stateProvider){
 
 	$stateProvider.state('section',{
 	 	cache: cacheActive,
-	 	url: '/section',
+	 	url: '/section/:listId',
 	 	templateUrl: 'js/templates/section.html',
 	 	controller: 'sectionList',
 	 })

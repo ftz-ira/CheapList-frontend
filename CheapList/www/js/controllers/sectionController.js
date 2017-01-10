@@ -1,9 +1,9 @@
 'use strict';
 
 app.controller('sectionList',function($scope,sectionProvider,$http){
-	$scope.sections = sectionProvider.getSections();
-	console.log( $scope.sections);
-	/*var url = 'http://localhost:8080/cheaplist/sections';
+	//$scope.sections = sectionProvider.getSections();
+	//console.log( $scope.sections);
+	var url = 'http://localhost:8080/cheaplist/sections';
 		var sections = null;
 		$http.get(url).success(function(response){
 
@@ -18,6 +18,6 @@ app.controller('sectionList',function($scope,sectionProvider,$http){
 				console.log("fail");
 			}
 			//return sections;
-		})*/
+		})
 	
 })
