@@ -11,7 +11,6 @@ app.config(function ($stateProvider,  $locationProvider){
 	 	templateUrl: 'js/templates/homepage.html',
 	 	controller: 'homepage'
 	 })
-
 	$stateProvider.state('section',{
 	 	cache: cacheActive,
 	 	url: '/section/:listId',
