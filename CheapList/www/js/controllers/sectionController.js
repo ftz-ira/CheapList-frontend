@@ -8,7 +8,6 @@ app.controller('sectionList',function($scope,sectionProvider,$http){
 		$http.get(url).success(function(response){
 
 			if(response){
-
 				//sections = response;
 				$scope.sections = response;
 		
@@ -17,7 +16,5 @@ app.controller('sectionList',function($scope,sectionProvider,$http){
 			}else{
 				console.log("fail");
 			}
-			//return sections;
 		})
-	
 })

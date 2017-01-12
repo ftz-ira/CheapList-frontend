@@ -9,8 +9,6 @@ app.controller('product',function($scope){
 			var new_quantity = product_quantity + opt;
 			$scope.product_quantity = 	new_quantity >= 0 ?new_quantity : 0;
 		}
-		
-		//console.log(product_quantity);	
 	};
 	
 })
