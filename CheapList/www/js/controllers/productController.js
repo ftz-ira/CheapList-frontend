@@ -12,3 +12,20 @@ app.controller('product',function($scope){
 	};
 	
 })
+app.controller('getProduct', function($scope,$stateParams,$http){
+	//console.log('getProduct');
+	var url = 'http://localhost:8080/cheaplist/categories/'+$stateParams.categoryId+'/products/';
+
+	//console.log($stateParams.categoryId);
+		
+		$http.get(url).success(function(response){
+
+			if(response){
+				console.log(response);
+				$scope.products = response;
+				
+			}else{
+				console.log("fail");
+			}
+		})
+})

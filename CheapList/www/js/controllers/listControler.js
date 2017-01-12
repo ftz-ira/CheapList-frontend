@@ -11,7 +11,7 @@ app.controller('list',function($http){
 			productQuantity : product_quantity
 		}
 		
-		$http.put(url).success(
+		$http.put(url,el).success(
 			function (response){
 
 			if(response){
