@@ -2,7 +2,7 @@
 
 app.controller('list',function($http){
 
-	$scope.addToList = function(product_quantity,productId,){
+	 /*$scope.addToList = function(product_quantity,productId,){
 
 		var url = 'http://localhost:8080/cheaplist/lists/22/element/';
 
@@ -19,11 +19,11 @@ app.controller('list',function($http){
 				console.log(response);
 				$scope.categories = response;
 		
-				console.log("ok");
+				console.log("section ok go to categories");
 				
 			}else{
 				console.log("fail");
 			}
 		})
-	};
+	};*/
 })

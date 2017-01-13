@@ -28,7 +28,7 @@ app.config(function ($stateProvider,  $locationProvider){
 	 	cache: cacheActive,
 	 	url: '/product/:categoryId',
 	 	templateUrl: 'js/templates/product.html',
-	 	controller: 'product'
+	 	controller: 'getProduct'
 	 })
 
 	$stateProvider.state('list',{
