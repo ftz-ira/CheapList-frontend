@@ -1,32 +1,37 @@
-<ion-view view-title="Produits">
+<ion-view view-title="Produits {{listId}}">
 <ion-content padding="true" >
 
 <div class="list">
-  <a ng-repeat="product in products.products" class="item item-thumbnail-left" ng-href="/product/{{ product.id }}">
-    <div class="row">
-      <div class="col">
+  <!-- a ng-repeat="product in products.products" class="" ng-href="/product/{{ product.id }}"-->
+  <div ng-repeat="product in products.products">
+    
+    <div class="row product-detail">
 
-        <img width="100px" height="100px" ng-src="{{ product.url }}">
-        <h2>{{product.brand}}</h2>
-        <h3>{{product.name}}</h3>
-        <h3>{{product.unitName}}</h3>
-        <h3>{{product.volume}}</h3>
+      <div class="col col-33">
 
-
-        <!-- <div class="col" ng-model="product" ng-controller="product">
-
-          <div>
-            <span ng-init="product_quantity=0">quantité : {{product_quantity}} </span>
-          </div>
-
-          <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,+1)"><i class="ion-chevron-up"></i></div>
-          <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,-1)"><i class="ion-chevron-down"></i></div>
-
-        </div>-->
+        <img ng-src="{{ product.url }}">
       </div>
+
+      <div class="col col-33">
+        <h5> Marque : {{product.brand}}</h5>
+        <p>Produit: {{product.name}}</p>
+        <p>Poid/volume: {{product.unitName}}</p>
+        <!-- <p>V{{product.volume}}</p -->
+      </div>  
+
+      <div class="col col-33" ng-model="product" ng-controller="product">
+
+        <div>
+          <span ng-init="product_quantity=0">Quantité : {{product_quantity}} </span>
+        </div>
+
+        <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,+1,listId)"><i class="ion-chevron-up"></i></div>
+        <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,-1,listId)"><i class="ion-chevron-down"></i></div>
+      </div>
+
     </div>
-  
-</a>
+  </div>
+  <!--/a -->
 </div>
 </ion-content>
 </ion-view>

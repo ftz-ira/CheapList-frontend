@@ -11,13 +11,11 @@ app.controller('homepage',function($scope,$http){
 				//sections = response;
 				$scope.lists = response.shoppingLists;
 		
-				console.log("ok");
+				console.log("list ok go to section");
 
 			}else{
 				console.log("fail");
 			}
 			//return sections;
 		})
-
-
 })
