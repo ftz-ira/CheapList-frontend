@@ -2,9 +2,10 @@
 
 var cacheActive =  false;
 
-app.config(function ($stateProvider){
+app.config(function ($stateProvider,  $locationProvider){
 
-	
+	$locationProvider.html5Mode(true).hashPrefix('!');
+
 	$stateProvider.state('homepage',{
 	 	cache: cacheActive,
 	 	url: '/',
@@ -14,22 +15,28 @@ app.config(function ($stateProvider){
 
 	$stateProvider.state('section',{
 	 	cache: cacheActive,
-	 	url: '/section',
+	 	url: '/section/:listId',
 	 	templateUrl: 'js/templates/section.html',
 	 	controller: 'sectionList',
 	 })
 	$stateProvider.state('category',{
 	 	cache: cacheActive,
-	 	url: '/category/:categoryId',
+	 	url: '/category/:sectionId',
 	 	templateUrl: 'js/templates/category.html',
-	 	controller: 'category'
+	 	controller: 'categories'
 	 })
 	$stateProvider.state('product',{
 	 	cache: cacheActive,
-	 	url: '/product',
+	 	url: '/product/:categoryId',
 	 	templateUrl: 'js/templates/product.html',
-	 	controller: 'category'
+	 	controller: 'getProduct'
 	 })
+
+	$stateProvider.state('list',{
+		cache: cacheActive,
+		url: '/list/',
+		controller: 'listController'
+	})
 
 	$stateProvider.state('checkshop',{
 	 	cache: cacheActive,
@@ -42,8 +49,8 @@ app.config(function ($stateProvider){
 	 	cache: cacheActive,
 	 	url: '/shopgrid',
 	 	templateUrl: 'js/templates/shopgrid.html'
-	 	
 	 })
+<<<<<<< HEAD
 
 	$stateProvider.state('scan',{
 	 	cache: cacheActive,
@@ -52,4 +59,6 @@ app.config(function ($stateProvider){
 	 	controller: 'category'
 	 })
 	 
+=======
+>>>>>>> e1c3b085f5587d8bc7ecced58229067d13a90ed6
 });

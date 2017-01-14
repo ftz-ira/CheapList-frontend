@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-
+    <base href="/" target="_blank, _self, _parent, _top">
     <link rel="manifest" href="manifest.json">
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -34,6 +34,9 @@
 
     <!-- Services -->
     <script src="js/services/sectionProvider.js"></script>
+
+    <!-- directive -->
+    <script src="js/directives/bottomNav.js"></script>
     
   </head>
   <body ng-app="cheapList">
@@ -71,11 +74,11 @@
 
 
 <!-- footer -->
-<div class="bar bar-footer bar-positive">
+<!-- <div class="bar bar-footer bar-positive">
   <button class="button button-clear">Left</button>
   <div class="title">Fini</div>
   <button class="button button-clear">Right</button>
-</div>
+</div> -->
   </body>
 </html>
 

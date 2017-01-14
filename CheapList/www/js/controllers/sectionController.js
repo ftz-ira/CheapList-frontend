@@ -1,17 +1,23 @@
 'use strict';
 
-app.controller('sectionList',function($scope,sectionProvider){
+app.controller('sectionList',function($scope,$http,$stateParams,$rootScope){
 
+	// passage de l'id de liste pour ajouter les produits
+	$rootScope.listId = $stateParams.listId;
 	
-
-			$scope.sections = sectionProvider.getSections();
-
 	
-})
+	var url = 'http://localhost:8080/cheaplist/sections';
 
-app.controller('SetListName', function(){
-	
-})
-app.controller('SetList',function(){
+	$http.get(url).success(function(response){
 
+		if(response){
+				//sections = response;
+				$scope.sections = response;
+
+				console.log("categories ok go to products");
+				
+			}else{
+				console.log("fail");
+			}
+		})
 })
