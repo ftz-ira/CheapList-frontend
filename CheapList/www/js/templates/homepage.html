@@ -7,6 +7,7 @@
 
     <div class="list" ng-controller="homepage">
 
+
     	<div ng-repeat="list in lists" class="row item item-thumbnail-left" >
         
         <a class="col col-67" ng-href="section/{{ list.id }}">
@@ -14,6 +15,7 @@
     		
           <span>{{ list.id }}</span>
           <span>{{ list.name }}</span>
+          
     		</a>
         <div class="col col-33">
           <button class="button button-small">Voir</button>

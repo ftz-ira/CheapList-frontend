@@ -31,15 +31,13 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 			$scope.productQuantity = 	new_quantity >= 0 ?new_quantity : 0;
 		}
 
-		// var url = 'http://localhost:8080/cheaplist/lists/'+$rootScope.listId+'/element/';
-		var url = BASE_URL.url+'lists/'+$rootScope.listId+'/element/';
+		 var url = 'http://localhost:8080/cheaplist/lists/'+$rootScope.listId+'/element/';
+		//var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/';
 
 		var el = {
 			idProduct : product.id,
 			productQuantity : productQuantity
 		};
-
-		console.log(url);
 
 		$http.put(url, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
 		.success(
@@ -64,14 +62,16 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 		/*** Suppression un element dans une liste *****/
 
 		
-		var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/'+product.id;
-		console.log(url.url);
+		//var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/'+product.id;
+		//var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/'+product.id;
+		var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/35785';
+
+		//console.log($rootScope.listId);
 
 	// 	$http.delete(url).success(function(response){
 
 	// 	if(response){
 	// 		console.log(response);
-	// 		$scope.products = response;
 
 	// 	}else{
 	// 		console.log("fail");
