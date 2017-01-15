@@ -1,9 +1,9 @@
 'use strict';
 
 
-app.controller('getProduct', function($scope,$stateParams,$http){
+app.controller('getProduct', function($scope,$stateParams,$http,BASE_URL){
 	//console.log('getProduct');
-	var url = 'http://localhost:8080/cheaplist/categories/'+$stateParams.categoryId+'/products/';
+	var url = BASE_URL.url+'/categories/'+$stateParams.categoryId+'/products/';
 
 	//console.log($stateParams.categoryId);
 
@@ -19,54 +19,68 @@ app.controller('getProduct', function($scope,$stateParams,$http){
 	})
 })
 
-app.controller('product',function($rootScope,$scope,$http,$templateCache){
+app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_URL){
 
-	
-	$scope.setQuantity = function(product_quantity,opt){
 
-		if(product_quantity >= 0){
-			var new_quantity = product_quantity + opt;
-			$scope.product_quantity = 	new_quantity >= 0 ?new_quantity : 0;
-		}
-	};
-
-	$scope.addToList = function(product_quantity,opt,product){
+	$scope.addToList = function(productQuantity,opt,product){
 
 		//console.log($rootScope.listId);
 
-		if(product_quantity >= 0){
-			var new_quantity = product_quantity + opt;
-			$scope.product_quantity = 	new_quantity >= 0 ?new_quantity : 0;
+		if(productQuantity >= 0){
+			var new_quantity = productQuantity + opt;
+			$scope.productQuantity = 	new_quantity >= 0 ?new_quantity : 0;
 		}
 
-		var url = 'http://localhost:8080/cheaplist/lists/'+$rootScope.listId+'/element/';
+		// var url = 'http://localhost:8080/cheaplist/lists/'+$rootScope.listId+'/element/';
+		var url = BASE_URL.url+'lists/'+$rootScope.listId+'/element/';
 
 		var el = {
-			idProduct : 19830,
-			productQuantity : 222
+			idProduct : product.id,
+			productQuantity : productQuantity
 		};
-		console.log(JSON.stringify(el));
 
-		// $http.put(url, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
-		// .success(
-		// 	function (response){
+		console.log(url);
 
-		// 		if(response){
-		// 		//sections = response;
-		// 		console.log(response);
-		// 		//$scope.categories = response;
+		$http.put(url, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
+		.success(
+			function (response){
 
-		// 		console.log("product ajouter a la liste");
+				if(response){
+				//sections = response;
+				console.log(response);
+				//$scope.categories = response;
 
-		// 	}else{
-		// 		console.log("fail");
-		// 	}
-		// },function(error){
-		// 	console.log(error);
-		// })
+				console.log("product ajouter a la liste");
 
+			}else{
+				console.log("fail");
+			}
+		},function(error){
+			console.log(error);
+		})
 
 	};
+	$scope.removeProduct = function(product){
+		/*** Suppression un element dans une liste *****/
+
+		
+		var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/'+product.id;
+		console.log(url.url);
+
+	// 	$http.delete(url).success(function(response){
+
+	// 	if(response){
+	// 		console.log(response);
+	// 		$scope.products = response;
+
+	// 	}else{
+	// 		console.log("fail");
+	// 	}
+	// });
+
+
+
+	}
 })
 
 

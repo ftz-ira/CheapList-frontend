@@ -23,15 +23,17 @@
     <div class="col col-33" ng-model="product" ng-controller="product">
 
       <div>
-        <span ng-init="product_quantity=0"><h2>Quantité : {{product_quantity}}</h2></span>
+        <span ng-init="productQuantity=0"><h2>Quantité : {{productQuantity}}</h2></span>
       </div>
 
-      <div class="button button-balanced button-small"  ng-click="addToList(product_quantity,+1,{{product}})"><i class="ion-chevron-up"></i>
+      <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,+1,{{product}})"><i class="ion-chevron-up"></i>
       </div>
-      <div class="button button-balanced button-small"  ng-click="addToList(product_quantity,-1,{{product}})"><i class="ion-chevron-down"></i>
+      <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,-1,{{product}})"><i class="ion-chevron-down"></i>
+      </div>
+      <div class="button button-balanced button-small"  ng-click="removeProduct({{product}})"><i class="ion-close-circled"></i>
       </div>
     </div>
-    
+
     <hr>
     
   </div>
