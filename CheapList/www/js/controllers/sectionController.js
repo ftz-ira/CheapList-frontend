@@ -14,7 +14,7 @@ app.controller('sectionList',function($scope,$http,$stateParams,$rootScope){
 				//sections = response;
 				$scope.sections = response;
 
-				console.log("categories ok go to products");
+				console.log("section ok go to categories");
 				
 			}else{
 				console.log("fail");

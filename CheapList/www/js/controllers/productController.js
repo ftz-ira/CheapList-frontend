@@ -6,20 +6,20 @@ app.controller('getProduct', function($scope,$stateParams,$http){
 	var url = 'http://localhost:8080/cheaplist/categories/'+$stateParams.categoryId+'/products/';
 
 	//console.log($stateParams.categoryId);
-		
-		$http.get(url).success(function(response){
 
-			if(response){
-				console.log(response);
-				$scope.products = response;
-				
-			}else{
-				console.log("fail");
-			}
-		})
+	$http.get(url).success(function(response){
+
+		if(response){
+			console.log(response);
+			$scope.products = response;
+
+		}else{
+			console.log("fail");
+		}
+	})
 })
 
-app.controller('product',function($scope,$http){
+app.controller('product',function($rootScope,$scope,$http,$templateCache){
 
 	
 	$scope.setQuantity = function(product_quantity,opt){
@@ -30,28 +30,60 @@ app.controller('product',function($scope,$http){
 		}
 	};
 
-	$scope.addToList = function(product_quantity,productId,listId){
+	$scope.addToList = function(product_quantity,opt,product){
 
-		var url = 'http://localhost:8080/cheaplist/lists/'+listId+'/element/';
+		//console.log($rootScope.listId);
+
+		if(product_quantity >= 0){
+			var new_quantity = product_quantity + opt;
+			$scope.product_quantity = 	new_quantity >= 0 ?new_quantity : 0;
+		}
+
+		var url = 'http://localhost:8080/cheaplist/lists/'+$rootScope.listId+'/element/';
 
 		var el = {
-			idProduct : productId,
-			productQuantity : product_quantity
-		}
-		
-		$http.put(url).success(
-			function (response){
+			idProduct : 19830,
+			productQuantity : 222
+		};
+		console.log(JSON.stringify(el));
 
-			if(response){
-				//sections = response;
-				console.log(response);
-				$scope.categories = response;
-		
-				console.log("product ajouter a la liste");
-				
-			}else{
-				console.log("fail");
-			}
-		})
+		// $http.put(url, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
+		// .success(
+		// 	function (response){
+
+		// 		if(response){
+		// 		//sections = response;
+		// 		console.log(response);
+		// 		//$scope.categories = response;
+
+		// 		console.log("product ajouter a la liste");
+
+		// 	}else{
+		// 		console.log("fail");
+		// 	}
+		// },function(error){
+		// 	console.log(error);
+		// })
+
+
 	};
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

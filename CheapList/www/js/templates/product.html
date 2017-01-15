@@ -1,35 +1,39 @@
 <ion-view view-title="Produits {{listId}}">
-<ion-content padding="true" >
+<ion-content>
 
 <div class="list">
+
   <!-- a ng-repeat="product in products.products" class="" ng-href="/product/{{ product.id }}"-->
-  <div ng-repeat="product in products.products">
-    
-    <div class="row product-detail">
+  <div ng-repeat="product in products.products" class="row item item-thumbnail-left product-detail">
 
-      <div class="col col-33">
 
-        <img ng-src="{{ product.url }}">
-      </div>
 
-      <div class="col col-33">
-        <h5> Marque : {{product.brand}}</h5>
-        <p>Produit: {{product.name}}</p>
-        <p>Poid/volume: {{product.unitName}}</p>
-        <!-- <p>V{{product.volume}}</p -->
-      </div>  
+    <div class="col col-33">
 
-      <div class="col col-33" ng-model="product" ng-controller="product">
-
-        <div>
-          <span ng-init="product_quantity=0">Quantité : {{product_quantity}} </span>
-        </div>
-
-        <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,+1,listId)"><i class="ion-chevron-up"></i></div>
-        <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,-1,listId)"><i class="ion-chevron-down"></i></div>
-      </div>
-
+      <img ng-src="{{ product.url }}">
     </div>
+
+    <div class="col col-33">
+      <h3> Marque : {{product.brand}}</h3>
+      <p>Produit: {{product.name}}</p>
+      <p>Poid/volume: {{product.unitName}}</p>
+      <!-- <p>V{{product.volume}}</p -->
+    </div>  
+
+    <div class="col col-33" ng-model="product" ng-controller="product">
+
+      <div>
+        <span ng-init="product_quantity=0"><h2>Quantité : {{product_quantity}}</h2></span>
+      </div>
+
+      <div class="button button-balanced button-small"  ng-click="addToList(product_quantity,+1,{{product}})"><i class="ion-chevron-up"></i>
+      </div>
+      <div class="button button-balanced button-small"  ng-click="addToList(product_quantity,-1,{{product}})"><i class="ion-chevron-down"></i>
+      </div>
+    </div>
+    
+    <hr>
+    
   </div>
   <!--/a -->
 </div>

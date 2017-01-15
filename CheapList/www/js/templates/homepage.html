@@ -3,20 +3,26 @@
 
     <div class="list" ng-controller="homepage">
 
-    	<a ng-repeat="list in lists" class="item item-thumbnail-left" ng-href="section/{{ list.id }}">
+    	<div ng-repeat="list in lists" class="row item item-thumbnail-left" >
         
-    		<i class="ion-clipboard" />
-        <span>{{ list.id }}</span>
-        <span>{{ list.name }}</span>
+        <a class="col col-67" ng-href="section/{{ list.id }}">
+        
     		
-    	</a>
+          <span>{{ list.id }}</span>
+          <span>{{ list.name }}</span>
+    		</a>
+        <div class="col col-33">
+          <button class="button button-small">Voir</button>
+          <button class="button button-small">Modifier</button>
+        </div>
+        <hr>
+    	</div>
     </div>
      <!--  <div>
         <a class="item" nav-direction="forward" ui-sref="section">
           liste 1
 
-          <button class="button button-small">Voir</button>
-          <button class="button button-small">Modifier</button>
+          
         </a>
 
       </div>
