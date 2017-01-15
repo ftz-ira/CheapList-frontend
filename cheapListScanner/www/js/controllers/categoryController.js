@@ -1,12 +1,30 @@
 'use strict';
 
-app.controller('category',function($scope, $stateParams){
+app.controller('categories',function($scope, $stateParams,$http){
 
 	
-     //console.log($stateParams.categoryId);
+     //console.log($stateParams.sectionId);
      
+     var url = 'http://localhost:8080/cheaplist/sections/'+$stateParams.sectionId+'/categories/';
+     //http://localhost:8080/cheaplist/sections/1/categories/
+		
+		$http.get(url).success(function(response){
 
-     	$scope.categorys = 
+			if(response){
+
+				//sections = response;
+				console.log(response);
+				$scope.categories = response;
+		
+				console.log("product ok");
+				
+			}else{
+				console.log("fail");
+			}
+			//return sections;
+		})
+
+  /*   	$scope.categorys = 
 	[{
 			"name": "formage",
 			"description" : " Les fromages",
@@ -29,7 +47,7 @@ app.controller('category',function($scope, $stateParams){
 			"description" : " Les oeufs",
 			"id" : "4",
 			"pict": "http://placehold.it/140x100"
-	}]
+	}]*/
     
   
 	

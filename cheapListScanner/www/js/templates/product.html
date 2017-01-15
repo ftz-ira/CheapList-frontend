@@ -1,51 +1,37 @@
-<ion-view view-title="Produits">
+<ion-view view-title="Produits {{listId}}">
 <ion-content padding="true" >
 
 <div class="list">
-
-	<!--<a ng-repeat="item in items" class="item item-thumbnail-left" ng-href="#/item/{{  }}">
-		<img ng-src="{{ item.image }}">
-		<h2></h2>
-	</a>-->
-  <div class="row">
-    <div class="col">
-      <a class="item item-thumbnail-left" href="#">
-
-        <img src="http://placehold.it/140x100">
-        <h2>Camembert</h2>
-        <p>le petit</p>
-      </a>
-    </div>
+  <!-- a ng-repeat="product in products.products" class="" ng-href="/product/{{ product.id }}"-->
+  <div ng-repeat="product in products.products">
     
-    <div class="col" ng-model="product" ng-controller="product">
-      <div>
-        <span ng-init="product_quantity=0">quantité : {{product_quantity}} </span>
+    <div class="row product-detail">
+
+      <div class="col col-33">
+
+        <img ng-src="{{ product.url }}">
       </div>
-      
-      <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,+1)"><i class="ion-chevron-up"></i></div>
-      <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,-1)"><i class="ion-chevron-down"></i></div>
+
+      <div class="col col-33">
+        <h5> Marque : {{product.brand}}</h5>
+        <p>Produit: {{product.name}}</p>
+        <p>Poid/volume: {{product.unitName}}</p>
+        <!-- <p>V{{product.volume}}</p -->
+      </div>  
+
+      <div class="col col-33" ng-model="product" ng-controller="product">
+
+        <div>
+          <span ng-init="product_quantity=0">Quantité : {{product_quantity}} </span>
+        </div>
+
+        <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,+1,listId)"><i class="ion-chevron-up"></i></div>
+        <div class="button button-balanced button-small"  ng-click="setQuantity(product_quantity,-1,listId)"><i class="ion-chevron-down"></i></div>
+      </div>
 
     </div>
-
   </div>
-
-  <a class="item item-thumbnail-left" href="#">
-    <img src="http://placehold.it/140x100">
-    <h2>Camembert</h2>
-    <p>président</p>
-  </a>
-  <a class="item item-thumbnail-left" href="#">
-    <img src="http://placehold.it/140x100">
-    <h2>Chaussé aux moines</h2>
-    <p></p>
-  </a>
-
-<!-- scan button -->
-    <a class="button" nav-direction="forward" ui-sref="homepage">Fini</a>
-    <a class="button" nav-direction="forward" ui-sref="scan">Ajouter un produit</a>
-    <!-- <a class="button" ng-click="scanBarcode()">Scan</a> -->
-
+  <!--/a -->
 </div>
-
 </ion-content>
 </ion-view>

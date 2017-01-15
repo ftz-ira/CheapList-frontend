@@ -1,41 +1,42 @@
 <ion-view view-title="Mes Listes">
-<ion-content>
+  <ion-content>
 
-  <div class="list">
+    <div class="list" ng-controller="homepage">
 
-  	<!--<a ng-repeat="item in items" class="item item-thumbnail-left" ng-href="#/item/{{  }}">
-  		<img ng-src="{{ item.image }}">
-  		<h2></h2>
-  	</a>-->
-
-   <div>
-    <a class="item" nav-direction="forward" ui-sref="section">
-      liste 1
-
-      <button class="button button-small">Voir</button>
-      <button class="button button-small">Modifier</button>
-
-    </a>
-
-
-  </div>
-  <div>
-    <a class="item" nav-direction="forward" ui-sref="section">
-      liste 2
-    </a>
+      <a ng-repeat="list in lists" class="item item-thumbnail-left" ng-href="section/{{ list.id }}">
+        
+        <i class="ion-clipboard" />
+        <span>{{ list.id }}</span>
+        <span>{{ list.name }}</span>
+        
+      </a>
     </div>
-  <div>
-    <a class="item" nav-direction="forward" ui-sref="section">
-      liste 3
-    </a>
-    </div>
-  <div>
-     <a class="item" nav-direction="forward" ui-sref="section">
-      liste 4
-    </a>
-    </div>
+     <!--  <div>
+        <a class="item" nav-direction="forward" ui-sref="section">
+          liste 1
 
-  </div>
+          <button class="button button-small">Voir</button>
+          <button class="button button-small">Modifier</button>
+        </a>
 
-</ion-content>
+      </div>
+      <div>
+        <a class="item" nav-direction="forward" ui-sref="section">
+          liste 2
+        </a>
+      </div>
+      <div>
+        <a class="item" nav-direction="forward" ui-sref="section">
+          liste 3
+        </a>
+      </div>
+      <div>
+       <a class="item" nav-direction="forward" ui-sref="section">
+        liste 4
+      </a>
+      </div>
+
+      -->
+
+  </ion-content>
 </ion-view>

@@ -3,7 +3,6 @@
 var cacheActive =  false;
 
 app.config(function ($stateProvider){
-
 	
 	$stateProvider.state('homepage',{
 	 	cache: cacheActive,
@@ -50,6 +49,5 @@ app.config(function ($stateProvider){
 	 	url: '/scan',
 	 	templateUrl: 'js/templates/scan.html',
 	 	controller: 'category'
-	 })
-	 
+	 }) 
 });
