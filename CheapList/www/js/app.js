@@ -11,10 +11,6 @@ var app = angular.module('cheapList', ['ionic']).run(function($ionicPlatform,$lo
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
     }
-    /*if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }*/
-
     $location.path('/');
   });
 })
