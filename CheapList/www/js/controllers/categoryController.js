@@ -16,7 +16,7 @@ app.controller('categories',function($scope, $stateParams,$http){
 				console.log(response);
 				$scope.categories = response;
 		
-				console.log("product ok");
+				console.log("category ok go to product");
 				
 			}else{
 				console.log("fail");
