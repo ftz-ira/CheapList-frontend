@@ -18,19 +18,24 @@
       <h3> Marque : {{product.brand}}</h3>
       <p>Produit: {{product.name}}</p>
       <p>Poid/volume: {{product.unitName}}</p>
-      <p>elementId: {{lists.elementId}}</p>
+      <p>id: {{product.id}}</p>
+      
     </div>  
 
-    <div class="col col-33" ng-model="product" ng-controller="product">
+    <div class="col col-33" ng-model="product" ng-controller="product as $p" >
 
       <div>
-        <span ng-init="productQuantity=0"><h2>Quantité : {{productQuantity}}</h2></span>
+        <span ><h2>Quantité : {{$p.userdata.getProductQuantity(listId,product.id)}}</h2></span>
       </div>
 
-      <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,+1,{{product}})"><i class="ion-chevron-up"></i>
+      <!-- <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,+1,{{product}})"><i class="ion-chevron-up"></i> -->
+      <div class="button button-balanced button-small"  ng-click="$p.userdata.setProductQuantity(1,listId,product.id)"><i class="ion-chevron-up"></i>
       </div>
-      <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,-1,{{product}})"><i class="ion-chevron-down"></i>
+
+      <div class="button button-balanced button-small"  ng-click="$p.userdata.setProductQuantity(-1,listId,product.id)"><i class="ion-chevron-down"></i>
       </div>
+      <!-- <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,-1,{{product}})"><i class="ion-chevron-down"></i>
+      </div> -->
       <div class="button button-assertive button-small"  ng-click="removeProduct({{product}})"><i class="ion-close-circled"></i>
       </div>
     </div>

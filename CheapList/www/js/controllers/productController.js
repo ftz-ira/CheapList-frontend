@@ -21,21 +21,21 @@ app.controller('getProduct', function($scope,$stateParams,$http,BASE_URL){
 	})
 })
 
-app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_URL){
+app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_URL,userData){
 
 
-
+	this.userdata = userData;
 	$scope.addToList = function(productQuantity,opt,product){
 
+		// Le serveur spring a besoin en JSON : idProduct,productQuantity,idList
+		// HTTP PATCH : 
 
-
-		if(productQuantity >= 0){
+		/*if(productQuantity >= 0){
 			var new_quantity = productQuantity + opt;
 			$scope.productQuantity = 	new_quantity >= 0 ?new_quantity : 0;
-		}
+		}*/
 
-		 var url = 'http://localhost:8080/cheaplist/lists/'+$rootScope.listId+'/element/';
-		//var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/';
+		var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/';
 
 		var el = {
 			idProduct : product.id,

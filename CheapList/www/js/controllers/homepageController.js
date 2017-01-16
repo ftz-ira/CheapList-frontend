@@ -1,35 +1,17 @@
 'use strict';
 
-app.controller('homepage', function($scope, $http, $rootScope) {
+app.controller('homepage', function($scope, $http, $rootScope, userData) {
 
 	var url = "http://localhost:8080/cheaplist/members/69/lists";
 
 	$http.get(url).success(function(response) {
 
-		if (response) {
-			
-			var lists = response.shoppingLists;
-			
-	      //console.log(response.shoppingLists);
+		var lists = response.shoppingLists;
+	//	console.log("seb",lists)
+		userData.addLists(lists);
 
-	      for (var i = 0; i <= response.shoppingLists.length; i++) {
-
-	      	if (response.shoppingLists[i] != undefined) {
-	      		for (var y = 0; y <= response.shoppingLists[i].listProducts.length; y++) {
-
-	      			if (response.shoppingLists[i].listProducts[y] != undefined) {
-	      				lists.elementId = response.shoppingLists[i].listProducts[y].id;
-		          
-		      		}
-		  		}
-			}
-		}
-
+		//console.log("produit", userData.getElement(22, 9) );
+		console.log(userData.getProductQuantity(22,36336));
 		$rootScope.lists = lists;
-		//console.log($rootScope.lists);
-		
-		} else {
-			console.log("fail");
-		}
 	})
 })
