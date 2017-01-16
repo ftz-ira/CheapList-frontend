@@ -1,51 +1,35 @@
 'use strict';
 
-app.controller('homepage',function($scope,$http,$rootScope){
+app.controller('homepage', function($scope, $http, $rootScope) {
 
 	var url = "http://localhost:8080/cheaplist/members/69/lists";
 
-	$http.get(url).success(function(response){
+	$http.get(url).success(function(response) {
 
-		// if(response){
+		if (response) {
+			
+			var lists = response.shoppingLists;
+			
+	      //console.log(response.shoppingLists);
 
+	      for (var i = 0; i <= response.shoppingLists.length; i++) {
 
-		// 		//$scope.lists = response.shoppingLists;
-		// 		var lists = response.shoppingLists;
-		// 		//console.log(response.shoppingLists[0].listProducts[0].id);
-		// 		//console.log(response.shoppingLists);
-				
-				
-		// 		for(var i = 0; i <= response.shoppingLists.length; i++){
-		// 		 	//console.log(response.shoppingLists[i].listProducts[i].id);
-		// 		 	for(var y= 0;y<=response.shoppingLists[i].listProducts.length;y++){
+	      	if (response.shoppingLists[i] != undefined) {
+	      		for (var y = 0; y <= response.shoppingLists[i].listProducts.length; y++) {
 
-		// 		 		//if(typeof response.shoppingLists[i].listProducts[y].id !== undefined){
-		// 		 			lists.elementId = response.shoppingLists[i].listProducts[y].id;	
-				 			
-		// 		 		//}
-				 		
-		// 		 	}
-		// 		 }
-		// 		 console.log(lists);
-		// 		 //console.log(lists);
-
-
-		// 		//console.log("list ok go to section");
-
-		// 	}else{
-		// 		console.log("fail");
-		// 	}
-				// fonctionnelle
-			if(response){
-
-
-				$scope.lists = response.shoppingLists;
-				console.log("list ok go to section");
-
-			}else{
-				console.log("fail");
+	      			if (response.shoppingLists[i].listProducts[y] != undefined) {
+	      				lists.elementId = response.shoppingLists[i].listProducts[y].id;
+		          
+		      		}
+		  		}
 			}
-			//return sections;
-		})
+		}
 
+		$rootScope.lists = lists;
+		//console.log($rootScope.lists);
+		
+		} else {
+			console.log("fail");
+		}
+	})
 })
