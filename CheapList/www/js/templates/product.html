@@ -29,7 +29,7 @@
       </div>
 
       <!-- <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,+1,{{product}})"><i class="ion-chevron-up"></i> -->
-      <div class="button button-balanced button-small"  ng-click="$p.userdata.setProductQuantity(1,listId,product.id)"><i class="ion-chevron-up"></i>
+      <div class="button button-balanced button-small"  ng-click="addToList($p.userdata.getProductQuantity(listId,product.id),listId,product.id)"><i class="ion-chevron-up"></i>
       </div>
 
       <div class="button button-balanced button-small"  ng-click="$p.userdata.setProductQuantity(-1,listId,product.id)"><i class="ion-chevron-down"></i>

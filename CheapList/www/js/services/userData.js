@@ -67,9 +67,9 @@
 			}
 			return 0;
 		}
-		/*this.setProductQuantity = function(opt,listId,productId){
+		this.setProductQuantity = function(opt,listId,productId){
 			
-		//console.log(opt,listId,productId);
+	
 
 		var list = this.getListById(listId);
 
@@ -86,7 +86,7 @@
 				}
 			}
 			return null;
-		}*/
+		}
 	}
 
 	app.service('userData', UserData);

@@ -26,4 +26,11 @@ app.controller('list',function($http){
 			}
 		})
 	};*/
+
+	$scope.saveListName =  function(){
+		
+	}
+	$scope.clearListName =  function(){
+
+	}
 })

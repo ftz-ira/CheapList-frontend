@@ -25,33 +25,48 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 
 
 	this.userdata = userData;
-	$scope.addToList = function(productQuantity,opt,product){
 
+	$scope.addToList = function(productQuantity,listId,productId){
+		productQuantity++;
 		// Le serveur spring a besoin en JSON : idProduct,productQuantity,idList
 		// HTTP PATCH : 
+
+		/*HTTP PATCH : http://localhost:8080/cheaplist/lists/22
+
+			{
+				"idProduct":8780,
+				"productQuantity":0
+			}*/
+
+
+
 
 		/*if(productQuantity >= 0){
 			var new_quantity = productQuantity + opt;
 			$scope.productQuantity = 	new_quantity >= 0 ?new_quantity : 0;
 		}*/
 
-		var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/';
+		var url = BASE_URL.url+'/lists/'+listId+'/frantz';
 
 		var el = {
-			idProduct : product.id,
+			idProduct : productId,
 			productQuantity : productQuantity
 		};
 
-		$http.put(url, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
+		console.log(JSON.stringify(el));
+
+		$http.patch(url, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
 		.success(
 			function (response){
 
 				if(response){
 				//sections = response;
-				console.log(response);
+			//	console.log(response);
+			//	userData.removeList(listId);
+			//	userData.setList(response);
 				//$scope.categories = response;
-
-				console.log("product ajouter a la liste");
+				userData.setProductQuantity(1,listId,productId)
+				//console.log("product ajouter a la liste");
 
 			}else{
 				console.log("fail");
@@ -70,7 +85,7 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 		var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/35785';
 
 		//console.log($rootScope.listId);
-
+	productQuantity--;
 	// 	$http.delete(url).success(function(response){
 
 	// 	if(response){
