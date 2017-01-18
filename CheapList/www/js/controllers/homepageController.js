@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('homepage', function($scope, $http, $rootScope, userData,) {
+app.controller('homepage', function($scope, $http, $rootScope, userData,BASE_URL) {
 
 	var url = BASE_URL.url+'/members/69/lists';
 
