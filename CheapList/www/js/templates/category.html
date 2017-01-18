@@ -5,7 +5,7 @@
 	
   <a ng-repeat="category in categories.categories" class="item item-thumbnail-left" ng-href="/product/{{category.id}}">
   	{{categories.id}}
-      <img ng-src=""/> 
+      <img ng-src="{{category.urlImage}}"/> 
       <h2>{{category.name}}</h2>
       <p>{{category.id}}</p>
   </a>

@@ -1,11 +1,11 @@
 'use strict';
 
-app.controller('categories',function($scope, $stateParams,$http){
+app.controller('categories',function($scope, $stateParams,$http,BASE_URL){
 
 	
      //console.log($stateParams.sectionId);
      
-     var url = 'http://localhost:8080/cheaplist/sections/'+$stateParams.sectionId+'/categories';
+     var url = BASE_URL.url+'/sections/'+$stateParams.sectionId+'/categories';
      //http://localhost:8080/cheaplist/sections/1/categories/
 		
 		$http.get(url).success(function(response){

@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('homepage', function($scope, $http, $rootScope, userData) {
+app.controller('homepage', function($scope, $http, $rootScope, userData,) {
 
-	var url = "http://localhost:8080/cheaplist/members/69/lists";
+	var url = BASE_URL.url+'/members/69/lists';
 
 	$http.get(url).success(function(response) {
 
