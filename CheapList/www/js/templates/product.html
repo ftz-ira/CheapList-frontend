@@ -3,7 +3,7 @@
 
 <div class="list">
 
-  
+
 
   <div ng-repeat="product in products.products" class="row item item-thumbnail-left product-detail">
 
@@ -19,8 +19,8 @@
       <p>Produit: {{product.name}}</p>
       <p>Poid/volume: {{product.unitName}}</p>
       <p>id: {{product.id}}</p>
-      
-    </div>  
+
+    </div>
 
     <div class="col col-33" ng-model="product" ng-controller="product as $p" >
 
@@ -29,19 +29,19 @@
       </div>
 
       <!-- <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,+1,{{product}})"><i class="ion-chevron-up"></i> -->
-      <div class="button button-balanced button-small"  ng-click="addToList($p.userdata.getProductQuantity(listId,product.id),listId,product.id)"><i class="ion-chevron-up"></i>
+      <div class="button button-balanced button-small"  ng-click="addToList(($p.userdata.getProductQuantity(listId,product.id)+1),listId,product.id)"><i class="ion-chevron-up"></i>
       </div>
 
-      <div class="button button-balanced button-small"  ng-click="$p.userdata.setProductQuantity(-1,listId,product.id)"><i class="ion-chevron-down"></i>
+      <div class="button button-balanced button-small"  ng-click="addToList(($p.userdata.getProductQuantity(listId,product.id)-1),listId,product.id)"><i class="ion-chevron-down"></i>
       </div>
       <!-- <div class="button button-balanced button-small"  ng-click="addToList(productQuantity,-1,{{product}})"><i class="ion-chevron-down"></i>
       </div> -->
-      <div class="button button-assertive button-small"  ng-click="removeProduct({{product}})"><i class="ion-close-circled"></i>
+      <div class="button button-assertive button-small"  ng-click="addToList(0,listId,product.id)"><i class="ion-close-circled"></i>
       </div>
     </div>
 
     <hr>
-    
+
   </div>
 </div>
 </ion-content>

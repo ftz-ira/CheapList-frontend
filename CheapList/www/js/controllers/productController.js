@@ -26,10 +26,10 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 
 	this.userdata = userData;
 
+
 	$scope.addToList = function(productQuantity,listId,productId){
-		productQuantity++;
 		// Le serveur spring a besoin en JSON : idProduct,productQuantity,idList
-		// HTTP PATCH : 
+		// HTTP PATCH :
 
 		/*HTTP PATCH : http://localhost:8080/cheaplist/lists/22
 
@@ -37,9 +37,6 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 				"idProduct":8780,
 				"productQuantity":0
 			}*/
-
-
-
 
 		/*if(productQuantity >= 0){
 			var new_quantity = productQuantity + opt;
@@ -61,11 +58,15 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 
 				if(response){
 				//sections = response;
-			//	console.log(response);
+				console.log(response);
+			//		console.log("Seb",userData.getListById(listId));
+			userData.getListById(listId).listProducts = response;
+
 			//	userData.removeList(listId);
 			//	userData.setList(response);
 				//$scope.categories = response;
-				userData.setProductQuantity(1,listId,productId)
+
+		//		userData.setProductQuantity(1,listId,productId)
 				//console.log("product ajouter a la liste");
 
 			}else{
@@ -79,13 +80,12 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 	$scope.removeProduct = function(product){
 		/*** Suppression un element dans une liste *****/
 
-		
+
 		//var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/'+product.id;
 		//var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/'+product.id;
 		var url = BASE_URL.url+'/lists/'+$rootScope.listId+'/element/35785';
 
 		//console.log($rootScope.listId);
-	productQuantity--;
 	// 	$http.delete(url).success(function(response){
 
 	// 	if(response){
@@ -100,22 +100,3 @@ app.controller('product',function($rootScope,$scope,$http,$templateCache,BASE_UR
 
 	}
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
