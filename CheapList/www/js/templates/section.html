@@ -1,27 +1,28 @@
 <ion-view view-title="Rayon">
-<ion-content>
+  <ion-content>
+
+    <div class="row" ng-controller="sectionList as sl">
+      <label class="item item-input col col-75">
+        <input type="text" ng-model="$sl.titre" placeholder="Nom de la liste de course">
+      </label>
+        {{ $sl.titre }}
+        <div class="button col button-positive" ng-click="$sl.saveSectionListName()">Valider</div>
+        <div class="button col button-assertive">Effacer</div>
+    </div>
 
 
 
 
-  <label class="item item-input">
-    <input type="text" placeholder="Nom de la liste">
-  </label>
-
-  <div class="item item-divider">divider</div>
-
-  <a ng-repeat="section in sections" class="item item-thumbnail-left" ng-href="/category/{{section.id}}">
-      <img ng-src="{{section.urlImage}}" />
-      <h2>{{section.name}}</h2>
-      <h3>{{section.description}}</h3>
-      <h3>{{section.id}}</h3>
-      
-    </a>
 
 
-
-
-</ion-content>
+    <div class="item item-divider">divider</div>
+      <a ng-repeat="section in sections" class="item item-thumbnail-left" ng-href="/category/{{section.id}}">
+        <img ng-src="{{section.urlImage}}" />
+        <h2>{{section.name}}</h2>
+        <h3>{{section.description}}</h3>
+        <h3>{{section.id}}</h3>
+      </a>
+  </ion-content>
 </ion-view>
 
 <span bottom-nav>ici</span>
