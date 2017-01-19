@@ -19,5 +19,15 @@ app.controller('sectionList',function($scope,$http,$stateParams,$rootScope,BASE_
 			}else{
 				console.log("fail");
 			}
-		})
+		});
+
+	this.saveSectionListName =  function(){
+/*	this.titre = 'new label of my list';
+	console.log(titre);
+*/
+		
+	};
+	$scope.clearSectionListName =  function(){
+
+	}
 })
