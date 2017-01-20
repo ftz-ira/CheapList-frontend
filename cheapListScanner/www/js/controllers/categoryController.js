@@ -5,7 +5,7 @@ app.controller('categories',function($scope, $stateParams,$http){
 	
      //console.log($stateParams.sectionId);
      
-     var url = 'http://localhost:8080/cheaplist/sections/'+$stateParams.sectionId+'/categories/';
+     var url = 'http://localhost:8080/cheaplist/sections/'+$stateParams.sectionId+'/categories';
      //http://localhost:8080/cheaplist/sections/1/categories/
 		
 		$http.get(url).success(function(response){
@@ -16,7 +16,7 @@ app.controller('categories',function($scope, $stateParams,$http){
 				console.log(response);
 				$scope.categories = response;
 		
-				console.log("product ok");
+				console.log("category ok go to product");
 				
 			}else{
 				console.log("fail");

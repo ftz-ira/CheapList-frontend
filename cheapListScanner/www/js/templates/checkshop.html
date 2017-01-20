@@ -1,12 +1,15 @@
-<ion-view view-title="checkshop">
+<ion-view view-title="category list:{{listId}} ">
 <ion-content padding="true">
-
-
-		<button class="button button-block button-positive"> <i class="ion-flash"></i>  Le magasin le moins chers </button>
 	
-		<button class="button button-block button-positive"> <i class="ion-ios-cart"></i> Je connais mon magasin </button>
-	
-
+<div class="list">
+	list id : {{listId}}
+  <a ng-repeat="category in categories.categories" class="item item-thumbnail-left" ng-href="/product/{{category.id}}">
+  	{{categories.id}}
+      <img ng-src=""/> 
+      <h2>{{category.name}}</h2>
+      <p>{{category.id}}</p>
+  </a>
+</div>
 
 </ion-content>
 </ion-view>

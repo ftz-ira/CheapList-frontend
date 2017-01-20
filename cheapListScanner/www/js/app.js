@@ -22,6 +22,7 @@ var app = angular.module('cheapList', ['ionic', 'ngCordova']).run(function($ioni
   });
 })
 
+app.constant('BASE_URL',{"url" : "http://localhost:8080/cheaplist"})
 app.controller("ExampleController", function($scope, $cordovaBarcodeScanner) {
     $scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData){

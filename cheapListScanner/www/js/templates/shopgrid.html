@@ -1,10 +1,27 @@
-<ion-view view-title="List des magasins">
-<ion-content padding="true">
+<ion-view view-title="Rayon">
+<ion-content padding="true" >
+
+<div class="list">
 
 
-		
-	list des magasins
+  <label class="item item-input">
+    <input type="text" placeholder="Nom de la liste">
+  </label>
+
+  <div class="item item-divider">divider</div>
+
+  <a ng-repeat="section in sections" class="item item-thumbnail-left" ng-href="/category/{{section.id}}">
+      <img ng-src="{{section.urlImage}}" />
+      <h2>{{section.name}}</h2>
+      <h3>{{section.description}}</h3>
+      <h3>{{section.id}}</h3>
+    </a>
+</div>
+
+
 
 
 </ion-content>
 </ion-view>
+
+<span bottom-nav>ici</span>
