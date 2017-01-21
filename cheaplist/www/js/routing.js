@@ -61,6 +61,24 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+   .state('app.choicemode', {
+    url: '/choicemode/:listId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/choicemode.html',
+        controller: 'ChoiceMode'
+      }
+    }
+  })
+    .state('app.estimate', {
+    url: '/estimate/:listId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/estimate.html',
+        controller: 'EstimateCtrl'
+      }
+    }
+  })
 
   .state('app.search', {
     url: '/search',
