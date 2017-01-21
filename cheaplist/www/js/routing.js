@@ -52,12 +52,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-  .state('app.scanner', {
-    url: '/scanner',
+  .state('app.shoptime', {
+    url: '/shoptime/:listId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/scanner.html',
-        controller: 'ScannerCtrl'
+        templateUrl: 'templates/shoptime.html',
+        controller: 'ShoptTimeCtrl'
       }
     }
   })

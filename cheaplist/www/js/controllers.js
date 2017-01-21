@@ -176,7 +176,20 @@ app.controller('CategoriesCtrl',function($scope, $stateParams,$http,BASE_URL){
       };
 })
 
-app.controller('ScannerCtrl',function($scope, $stateParams,$http,BASE_URL){
+app.controller('ShoptTimeCtrl',function($scope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL){
+
+   $scope.scanBarcode = function() {
+
+
+       $cordovaBarcodeScanner.scan().then(function(imageData) {
+           alert(imageData.text);
+           console.log("Barcode Format -> " + imageData.format);
+           console.log("Cancelled -> " + imageData.cancelled);
+        }, function(error) {
+          console.log("An error happened -> " + error);
+      });
+   alert("testsseb");
+ };
     
     // var url = BASE_URL.base+'/sections/'+$stateParams.sectionId+'/categories';
 
