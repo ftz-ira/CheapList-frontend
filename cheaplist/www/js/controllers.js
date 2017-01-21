@@ -176,6 +176,24 @@ app.controller('CategoriesCtrl',function($scope, $stateParams,$http,BASE_URL){
       };
 })
 
+app.controller('ScannerCtrl',function($scope, $stateParams,$http,BASE_URL){
+    
+    // var url = BASE_URL.base+'/sections/'+$stateParams.sectionId+'/categories';
+
+    // $http.get(url).success(function(response){
+
+    //   if(response){
+        
+    //     $scope.categories = response;
+
+    //     console.log(response);
+
+    //   }else{
+    //     console.log("fail");
+    //   }
+
+    // })
+})
 
 
 

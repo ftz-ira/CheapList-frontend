@@ -52,6 +52,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+  .state('app.scanner', {
+    url: '/scanner',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/scanner.html',
+        controller: 'ScannerCtrl'
+      }
+    }
+  })
 
   .state('app.search', {
     url: '/search',
