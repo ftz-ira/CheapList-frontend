@@ -62,7 +62,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
    .state('app.choicemode', {
-    url: '/choicemode/:listId',
+    url: '/choicemode',
     views: {
       'menuContent': {
         templateUrl: 'templates/choicemode.html',
