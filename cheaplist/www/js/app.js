@@ -21,5 +21,9 @@ var app = angular.module('starter', ['ionic', 'starter.controllers','ngCordova']
       StatusBar.styleDefault();
     }
   });
-})
-.constant('BASE_URL',{'base':'http://193.70.86.117:8080/cheaplist'});
+}) //ip vps
+//.constant('BASE_URL',{'base':'http://193.70.86.117:8080/cheaplist'});
+// ip catalina home 
+.constant('BASE_URL',{'base':'http://192.168.0.11:8080/cheaplist'});
+// ip eclipse
+//.constant('BASE_URL',{'base':'http://localhost:8080/cheaplist'});
