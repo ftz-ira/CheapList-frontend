@@ -151,37 +151,7 @@ app.controller('CategoriesCtrl',function($scope, $stateParams,$http,BASE_URL){
 //return sections;
     })
 })
-app.controller('ShoptTimeCtrl',function($scope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL){
 
-   $scope.scanBarcode = function() {
-
-
-       $cordovaBarcodeScanner.scan().then(function(imageData) {
-           alert(imageData.text);
-           console.log("Barcode Format -> " + imageData.format);
-           console.log("Cancelled -> " + imageData.cancelled);
-        }, function(error) {
-          console.log("An error happened -> " + error);
-          });
-       alert("testsseb");
-      };
-    
-    // var url = BASE_URL.base+'/sections/'+$stateParams.sectionId+'/categories';
-
-    // $http.get(url).success(function(response){
-
-    //   if(response){
-        
-    //     $scope.categories = response;
-
-    //     console.log(response);
-
-    //   }else{
-    //     console.log("fail");
-    //   }
-
-    // })
-})
 app.controller('ChoiceMode',function(){
 
 })
