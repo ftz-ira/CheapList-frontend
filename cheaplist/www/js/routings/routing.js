@@ -1,12 +1,9 @@
 
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
 
-/*$locationProvider.html5Mode({
-  enabled: true,
-  requireBase: false
-});*/
-
+$locationProvider.html5Mode(true).hashPrefix('!');
+ $urlRouterProvider.otherwise('/app/homepage');
   $stateProvider
 
   .state('app', {
@@ -119,5 +116,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   ;
   // if none of the above states are matched, use this as the fallback
- $urlRouterProvider.otherwise('/app/homepage');
+
 });

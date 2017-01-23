@@ -9,7 +9,7 @@
    	<div ng-repeat="list in lists" class="row item item-thumbnail-left" >
        
        <!-- a class="col col-67" ng-href="section/{{ list.id }}" -->
-       <a class="col col-50" ng-href="#/app/sections/{{list.id}}">
+       <a class="col col-50" ng-href="/app/sections/{{list.id}}">
        
          <span>{{ list.id }}</span>
          <span>{{ list.name }}</span>
@@ -18,7 +18,7 @@
    	</a>
        <div class="col col-50" ng-controller="ShoptTimeCtrl">
         <div class="row">
-           <a class="button button-small button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
+           <a class="button button-small button-energized col btn-voir" ng-href="/app/shoptime/{{list.id}}">Voir</a>
            <a class="button button-small button-balanced col btn-modifier" >Modifier</a>
          </div>
        </div>
