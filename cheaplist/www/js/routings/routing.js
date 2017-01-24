@@ -1,5 +1,3 @@
-
-
 app.config(function($stateProvider, $urlRouterProvider) {
 
 /*$locationProvider.html5Mode({
