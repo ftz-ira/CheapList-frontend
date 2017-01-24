@@ -129,7 +129,7 @@ angular.module('starter.controllers', [])
       }
 })
 
-app.controller('CategoriesCtrl',function($scope, $stateParams,$http,BASE_URL){
+.controller('CategoriesCtrl',function($scope, $stateParams,$http,BASE_URL){
 
 
     //console.log($stateParams.sectionId);
@@ -204,8 +204,7 @@ app.controller('CategoriesCtrl',function($scope, $stateParams,$http,BASE_URL){
             })
       };
 })
-
-app.controller('ShoptTimeCtrl',function($scope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL){
+.controller('ShoptTimeCtrl',function($scope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL){
 
    $scope.scanBarcode = function() {
 
@@ -236,11 +235,11 @@ app.controller('ShoptTimeCtrl',function($scope, $stateParams,$http,$cordovaBarco
 
     // })
 })
-app.controller('ChoiceMode',function(){
+.controller('ChoiceMode',function(){
 
 })
 
-app.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation){
+.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation){
 
 
     var geoloc = $cordovaGeolocation;

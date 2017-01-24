@@ -7,6 +7,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   requireBase: false
 });*/
 
+
   $stateProvider
 
   .state('app', {
@@ -115,9 +116,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'PlaylistCtrl'
       }
     }
-  })
-
-  ;
+  });
   // if none of the above states are matched, use this as the fallback
  $urlRouterProvider.otherwise('/app/homepage');
 });
