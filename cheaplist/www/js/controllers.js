@@ -239,33 +239,39 @@ angular.module('starter.controllers', [])
 .controller('ChoiceMode',function(){
 })
 
-.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicBackdrop){
+.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading){
 
+  var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
 
   var geoloc = $cordovaGeolocation;
   var posOptions = {timeout : 10000, enableHighAccuracy : false};
-
+  
   geoloc.getCurrentPosition(posOptions).then(function (position) {
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      // console.log(lat);
-      // console.log(lng);
-      // console.log($rootScope.listId);
 
-      var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
+    
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+
+    var el = {
+            lat: lat,
+            lng: lng 
+          };
       
-      var el = {
-        lat: lat,
-        lng: lng 
-      };
+      $ionicLoading.show({
 
-        if(el.lat != null && el.lng != null){
-           $http.post(url,JSON.stringify(el)).success(function(response){
-          $scope.shopList = response;
+        template:'Loading....',
+        duration: 3000}).then(function(){
+
+          if(el.lat != null && el.lng != null){
+
+              $http.post(url,JSON.stringify(el)).success(function(response){
+                //$ionicBackdrop.release();
+                $scope.shopList = response;
+              });
+          }
         });
-        }
-      });
 
+      });
 })
 
 

@@ -1,12 +1,12 @@
-<ion-view view-title="Produits {{listId}}">
+<ion-view view-title="Produits">
 <ion-content>
 
 <div class="list">
 div list des produits seb
 <div ng-repeat="element in listshoptime " class="row item item-thumbnail-left product-detail">
-   <div class="col col-33">
+   <!-- <div class="col col-33">
     <img ng-src="{{ product.url }}" >
-   </div>
+   </div> -->
 
   <div class="col col-75">
     <div>
@@ -17,7 +17,7 @@ div list des produits seb
 </div>
 </div>
 <div >
-   <div class="row" col col-100>
+   <div class="col col-100">
 <button class="button col col-50 button-energized" ng-click="scanBarcode()">
    Ajouter un nouveau produit
 </button>
