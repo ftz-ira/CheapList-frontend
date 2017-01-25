@@ -3,19 +3,49 @@
 <ion-view view-title="Mes Listes" >
  <ion-content>
 
+
+<ion-list ng-controller="HomepageCtrl" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+  
+ <!--  <ion-item ng-repeat="list in lists" class="item-thumbnail-left">
+
+    <h2>{{ list.id }}</h2>
+    <p>{{ list.name }}</p>
+    <ion-option-button class="button-positive" ng-click="share(list)"> Share </ion-option-button>
+    <ion-option-button class="button-info" ng-click="edit(list)">Edit</ion-option-button>
+    <ion-delete-button class="ion-minus-circled" ng-click="lists.splice($index, 1)"></ion-delete-button>
+    <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(list, $fromIndex, $toIndex)"></ion-reorder-button>
+
+  </ion-item>
+</ion-list> -->
+
+
    <div class="list" ng-controller="HomepageCtrl">
 
 
+<!-- <ion-list show-delete="shouldShowDelete">
+  <ion-item>
+    <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+    Hello, list item!
+  </ion-item>
+</ion-list>
+<ion-toggle ng-model="shouldShowDelete">
+  Show Delete?
+</ion-toggle> -->
+
+
+
+    
+
    	<div ng-repeat="list in lists" class="row item item-thumbnail-left" >
        
-       <!-- a class="col col-67" ng-href="section/{{ list.id }}" -->
-       <a class="col col-50" >
-       
+      <a class="col col-50" >
+   
+        
          <span>{{ list.id }}</span>
          <span>{{ list.name }}</span>
-         <!-- {{lists.elementId}} -->
 
-   	</a>
+      </a>
+       
        <div class="col col-50" ng-controller="ShoptTimeCtrl">
         <div class="row">
            <a class="button button-small button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
@@ -26,33 +56,6 @@
 
    	</div>
    </div>
-
-   
-    <!--  <div>
-       <a class="item" nav-direction="forward" ui-sref="section">
-         liste 1
-
-         
-       </a>
-
-     </div>
-     <div>
-       <a class="item" nav-direction="forward" ui-sref="section">
-         liste 2
-       </a>
-     </div>
-     <div>
-       <a class="item" nav-direction="forward" ui-sref="section">
-         liste 3
-       </a>
-     </div>
-     <div>
-      <a class="item" nav-direction="forward" ui-sref="section">
-       liste 4
-     </a>
-     </div>
-
-     -->
 
  </ion-content>
 </ion-view>

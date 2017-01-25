@@ -23,3 +23,27 @@ a {
 	margin: 5px;
 }
 
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+/* Might want to wrap a span around your checkbox text */
+.checkboxtext
+{
+  /* Checkbox text */
+  font-size: 110%;
+  display: inline;
+  
+}
+.pricei{
+	background-color: #E1E1E1;
+	width: 90%;
+	height: 90%;
+	font-size: 40px;
+}

@@ -1,33 +1,39 @@
-<ion-view view-title="Produits">
+<ion-view view-title="Mes courses">
 <ion-content>
 
-<div class="list">
-div list des produits seb
-<div ng-repeat="element in listshoptime " class="row item item-thumbnail-left product-detail">
-   <!-- <div class="col col-33">
-    <img ng-src="{{ product.url }}" >
-   </div> -->
+<div class="list ">
 
-  <div class="col col-75">
-    <div>
-    <h3> Marque : {{element.product.id}}</h3>
-    <p>Produit: {{element.product.name}}</p>
-    <p>Poids/volume: {{element.product.unitName}}</p>
-    </div>
-</div>
-</div>
-<div >
-   <div class="col col-100">
-<button class="button col col-50 button-energized" ng-click="scanBarcode()">
-   Ajouter un nouveau produit
-</button>
+  <div ng-repeat="element in listshoptime " class="row item item-thumbnail-left product-detail">
+     <!-- <div class="col col-33">
+      <img ng-src="{{ product.url }}" >
+     </div> -->
 
-<button class="button col col-50 button-assertive">
-Fini
-</button>
-</div>
+      <div class="col col-50">
+        <div>
+          <h3> Marque : Nutella</h3>
+          <p>Produit: {{element.product.name}}</p>
+          <p>Poids/volume: {{element.product.unitName}}</p>
+        </div>
+      </div>
+      <div class="col col-35">
+        <input class="price" type="text" placeholder="10,35 €" ng-model="price" size="5" value="10,35" />
+      </div>
+      <div class="col col-10 evenRow">
+          <input type="checkbox" />
+      </div>
+
+  </div>
 </div>
 
+<div class="row">
+    <button class="button col col-50 button-energized" ng-click="scanBarcode()">
+       Ajouter un nouveau produit
+    </button>
+
+    <button class="button col col-50 button-assertive">
+        Fini
+    </button>
+</div>
 
 
 </ion-content>

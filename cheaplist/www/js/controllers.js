@@ -64,6 +64,8 @@ angular.module('starter.controllers', [])
   var lists = response.shoppingLists;
   userData.addLists(lists);
   $rootScope.lists = lists;
+
+
 })
      // Recuperation du nom de liste pour pouvoir le modifier sur le tpl section
    })
@@ -71,6 +73,10 @@ angular.module('starter.controllers', [])
 .controller('SectionsCtrl',function($scope,$http,$stateParams,$rootScope,BASE_URL){
 
       // passage de l'id de liste pour ajouter les produits
+      $scope.shouldShowDelete = false;
+      $scope.shouldShowReorder = false;
+      $scope.listCanSwipe = true
+      
       $rootScope.listId = $stateParams.listId;
 
 
