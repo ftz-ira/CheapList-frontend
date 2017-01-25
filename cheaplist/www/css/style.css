@@ -1,0 +1,25 @@
+/* Empty. Add your own CSS if you like */
+img {
+    height: auto;
+    max-width: 100%;
+}
+/*.bar-stable{
+	-webkit-box-shadow: 3px 4px 64px 2px rgba(209,205,209,1);
+-moz-box-shadow: 3px 4px 64px 2px rgba(209,205,209,1);
+box-shadow: 3px 4px 64px 2px rgba(209,205,209,1);
+}*/
+a {
+	text-decoration: none;
+	font-size: 1.0em;
+    font-weight: bold;
+    color: #129f8d;
+}
+.btn-voir{
+	margin: 5px;
+	
+}
+
+.btn-modifier{
+	margin: 5px;
+}
+

@@ -1,0 +1,19 @@
+<ion-view view-title="category list:{{listId}} ">
+<ion-content>
+
+<div class="list">
+
+ <a ng-repeat="category in categories.categories" class="item item-thumbnail-left" ng-href="#/app/products/{{category.id}}">
+
+ 	{{category.id}}
+     <img ng-src="{{category.urlImage}}"/> 
+     <h2>{{category.name}}</h2>
+     <p>{{category.id}}</p>
+ </a>
+</div>
+
+</ion-content>
+</ion-view>
+<span bottom-nav></span>
+
+
