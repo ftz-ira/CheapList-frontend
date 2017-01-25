@@ -205,32 +205,35 @@ angular.module('starter.controllers', [])
 
 .controller('ShoptTimeCtrl',function($scope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL){
 
- $scope.scanBarcode = function() {
+  $scope.scanBarcode = function() {
+      $cordovaBarcodeScanner.scan().then(function(imageData) {
+          alert(imageData.text);
+          console.log("Barcode Format -> " + imageData.format);
+          console.log("Cancelled -> " + imageData.cancelled);
+       }, function(error) {
+         console.log("An error happened -> " + error);
+         });
+      alert("testsseb");
+     };
 
-   $cordovaBarcodeScanner.scan().then(function(imageData) {
-     alert(imageData.text);
-     console.log("Barcode Format -> " + imageData.format);
-     console.log("Cancelled -> " + imageData.cancelled);
-   }, function(error) {
-    console.log("An error happened -> " + error);
-  });
- };
+     var listIdd = "22";
+   
+   var url = BASE_URL.base+'/lists/'+listIdd; //$stateParams.listId;   
+   //var url = http://localhost:8080/cheaplist/lists/22;
 
-    // var url = BASE_URL.base+'/sections/'+$stateParams.sectionId+'/categories';
+   $http.get(url).success(function(response){
 
-    // $http.get(url).success(function(response){
+     if(response){
+       
+       $scope.listshoptime= response;
 
-    //   if(response){
+       console.log(response);
 
-    //     $scope.categories = response;
+     }else{
+       console.log("fail");
+     }
 
-    //     console.log(response);
-
-    //   }else{
-    //     console.log("fail");
-    //   }
-
-    // })
+   })
 })
 
 .controller('ChoiceMode',function(){
