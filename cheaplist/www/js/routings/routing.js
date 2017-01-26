@@ -78,6 +78,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+    .state('app.linkShopList',{
+      url: '/linkshoplist/:listId/:shopId',
+      'menuContent': {
+        templateUrl: 'templates/homepage.html',
+        controller: 'LinkShopListCtrl'
+      }
+    })
 
   .state('app.search', {
     url: '/search',

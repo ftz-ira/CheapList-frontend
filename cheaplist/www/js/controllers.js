@@ -61,9 +61,23 @@ angular.module('starter.controllers', [])
 
  $http.get(url).success(function(response) {
 
+  
+
   var lists = response.shoppingLists;
   userData.addLists(lists);
   $rootScope.lists = lists;
+
+  for(var list of lists){
+    let qty=0;
+    for(var l of list.listProducts){
+      qty += l.productQuantity;
+     
+    }
+     list.qty = qty;
+     console.log(list);
+  }
+
+
 
 
 })
@@ -233,7 +247,7 @@ angular.module('starter.controllers', [])
        
        $scope.listshoptime= response;
 
-       console.log(response);
+      // console.log(response);
 
      }else{
        console.log("fail");
@@ -248,6 +262,7 @@ angular.module('starter.controllers', [])
 .controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading){
 
   var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
+  console.log("EstimateCtrl");
 
   var geoloc = $cordovaGeolocation;
   var posOptions = {timeout : 10000, enableHighAccuracy : false};
@@ -276,10 +291,15 @@ angular.module('starter.controllers', [])
               });
           }
         });
-
       });
 })
 
+.controller('LinkShopListCtrl',function($stateParams,$http,BASE_URL,$scope){
+
+  //console.log($stateParams.listId,$stateParams.shopId);
+  console.log($stateParams.shopId);
+
+})
 
 
 
