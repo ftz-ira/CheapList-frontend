@@ -81,7 +81,7 @@
 
 			for( var element of listProduct ) {
 				if(element.product.id == productId) {
-					console.log(element.productQuantity)
+					//console.log(element.productQuantity)
 					return element.productQuantity = element.productQuantity + opt;
 				}
 			}

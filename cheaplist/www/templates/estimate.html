@@ -1,15 +1,15 @@
 <ion-view view-title="Classement">
  <ion-content> 
 
- <div ng-repeat="shop in shopList" class="row list" >
+ <div ng-repeat="shop in shopList" class="row list">
      <!-- <img ng-src="{{shop.urlImage}}"/>  -->
-   <a ui-sref="app.linkShopList({listId: listId, shopId: shop.id})" ng-controller="EstimateCtrl"> 
-    Magasin : {{shop.name}}
+     <a ui-sref="app.linkShopList({listId: listId, shopId: shop.id})" ng-controller="EstimateCtrl">
+     Magasin : {{shop.name}}
      Prix total {{shop.prixtotal}} € 
      Distance : {{shop.distance | number:2}} km
      Element manquants {{shop.elementmanquant}}
-    
-     </a>
+    </a>
+
      <!--  <div class="col">Magasin : {{shop.name}} </div>
      <div class="col">Prix total {{shop.prixtotal}} € </div>
      <div class="col">Distance : {{shop.distance | number:2}} km </div>
