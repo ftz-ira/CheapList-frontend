@@ -4,8 +4,8 @@
  <ion-content>
 
 
-<ion-list ng-controller="HomepageCtrl" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
-  
+  <ion-list ng-controller="HomepageCtrl" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+
  <!--  <ion-item ng-repeat="list in lists" class="item-thumbnail-left">
 
     <h2>{{ list.id }}</h2>
@@ -19,7 +19,7 @@
 </ion-list> -->
 
 
-   <div class="list" ng-controller="HomepageCtrl">
+<div class="list" ng-controller="HomepageCtrl">
 
 
 <!-- <ion-list show-delete="shouldShowDelete">
@@ -33,31 +33,31 @@
 </ion-toggle> -->
 
 
-   	<div ng-repeat="list in lists" class="row item item-thumbnail-left" >
-       
-      <a class="col col-50" >
-   
-        
-         <span>{{ list.id }}</span>
-         <span>{{ list.name }}</span>
-        <span > 
- 
-           Nombre de produits :  {{ list.qty }} 
-         </span> 
-      </a>
-       
-       <div class="col col-50" ng-controller="ShoptTimeCtrl">
-        <div class="row">
-           <a class="button button-small button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
-           <a class="button button-small button-balanced col btn-modifier" ng-href="#/app/sections/{{list.id}}">Modifier</a>
-         </div>
-       </div>
-       <hr>
+<div ng-repeat="list in lists" class="row item item-thumbnail-left" >
 
-   	</div>
-   </div>
+  <a class="col col-50" >
 
-  
 
- </ion-content>
+   <span>{{ list.id }}</span>
+   <span>{{ list.name }}</span>
+   <span >  Nombre de produits :  {{ list.qty }}  </span>
+   <span>{{ list.shop.name}}</span>
+   <span>{{ list.shop.address.streetName}}</span>
+   <span>{{ list.shop.address.city}}</span>
+ </a>
+
+ <div class="col col-50" ng-controller="ShoptTimeCtrl">
+  <div class="row">
+  <a class="button button-small button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
+   <a class="button button-small button-balanced col btn-modifier" ng-href="#/app/sections/{{list.id}}">Modifier</a>
+ </div>
+</div>
+<hr>
+
+</div>
+</div>
+
+
+
+</ion-content>
 </ion-view>

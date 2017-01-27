@@ -4,12 +4,14 @@
  <div ng-controller="EstimateCtrl" ng-repeat="shop in shopList" class="row list">
      <!-- <img ng-src="{{shop.urlImage}}"/>  -->
      <a ng-click="LinkShopList(listId, shop.idshop)">
+     <!-- <a ng-click="modal1.show(list)"> -->
      id : {{shop.idshop}}
      Magasin : {{shop.name}}
      Prix total {{shop.totalprice | number:2}} € 
      Distance : {{shop.distance | number:2}} km
      Element manquants {{shop.missingelement}}
     </a>
+    
 
      <!--  <div class="col">Magasin : {{shop.name}} </div>
      <div class="col">Prix total {{shop.prixtotal}} € </div>
