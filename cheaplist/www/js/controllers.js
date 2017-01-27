@@ -41,9 +41,6 @@ angular.module('starter.controllers', [])
   };
 })
 
-
-
-
 .controller('HomepageCtrl', function($scope, $http, $rootScope, userData,BASE_URL) {
 
  url = BASE_URL.base+'/members/69/lists/';
@@ -51,6 +48,7 @@ angular.module('starter.controllers', [])
  $http.get(url).success(function(response) {
 
   var lists = response.shoppingLists;
+  console.log(response);
   userData.addLists(lists);
   $rootScope.lists = lists;
 
@@ -277,16 +275,24 @@ angular.module('starter.controllers', [])
         });
 
       });
+
+  $scope.LinkShopList = function(listId, shopid){
+
+    console.log(listId, shopid);
+
+      var url= BASE_URL.base+"/lists/"+listId;
+
+          var el={
+            "shop": {
+              "id": shopid }
+          };
+
+        $http.patch(url,JSON.stringify(el)).success(
+          function(response){
+            console.log(response);
+          })
+  };
 })
-
-.controller('LinkShopListCtrl',function($stateParams,$http,BASE_URL,$scope){ 
-
-  
- 
-  console.log($stateParams.listId); 
- 
- 
-}) 
 
 
 

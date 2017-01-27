@@ -78,13 +78,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-    .state('app.linkShopList',{ 
-      url: '/linkshoplist/listId/:listId/shopId/:shopId', 
-      'menuContent': {  
-        controller: 'LinkShopListCtrl' 
-      } 
-    })
-
   // if none of the above states are matched, use this as the fallback
  $urlRouterProvider.otherwise('/app/homepage');
 
