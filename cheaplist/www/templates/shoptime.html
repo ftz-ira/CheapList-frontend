@@ -10,7 +10,7 @@
 
       <div class="col col-50">
         <div>
-          <h3> Marque : Nutella</h3>
+          <h3> Marque : {{element.product.brand}}</h3>
           <p>Produit: {{element.product.name}}</p>
           <p>Poids/volume: {{element.product.unitName}}</p>
         </div>
@@ -19,21 +19,21 @@
         <input class="price" type="text" placeholder="{{element.product.shopProducts[0].price}} €" ng-model="price" size="5" value="{{element.product.shopProducts[0].price}}" />
       </div>
       <div class="col col-10 evenRow">
-          <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)"  ng-checked="element.isInBasket == 'true'"  />
-         
+          <!-- <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)"  ng-checked="element.isInBasket == 'true'"  /> -->
+          <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)" ng-model="element.isInBasket">
       </div>
-
   </div>
 </div>
 
 <div class="row">
-    <button class="button col col-50 button-energized" ng-click="scanBarcode()">
-       Ajouter un nouveau produit
-    </button>
 
-    <button class="button col col-50 button-assertive">
+    <a class="button col button-energized" ng-click="scanBarcode()">
+       Scanner un nouveau produit
+    </a>
+    <a class="button col button-assertive" ng-href="#/app/homepage">
         Fini
-    </button>
+    </a>
+
 </div>
 
 

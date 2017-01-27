@@ -24,15 +24,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-  .state('app.sections', {
-    url: '/sections/:listId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/sections.html',
-        controller: 'SectionsCtrl'
-      }
-    }
-  })
+  
   .state('app.categories', {
     url: '/categories/:sectionId',
     views: {
@@ -57,6 +49,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       'menuContent': {
         templateUrl: 'templates/shoptime.html',
         controller: 'ShoptTimeCtrl'
+      }
+    }
+  })
+  .state('app.sections', {
+    url: '/sections/:listId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/sections.html',
+        controller: 'SectionsCtrl'
       }
     }
   })

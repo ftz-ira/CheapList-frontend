@@ -48,24 +48,22 @@ angular.module('starter.controllers', [])
  $http.get(url).success(function(response) {
 
   var lists = response.shoppingLists;
-  console.log(response);
+  //console.log(response);
   userData.addLists(lists);
   $rootScope.lists = lists;
 
-  for(var list of lists){ 
-    let qty=0; 
-    for(var l of list.listProducts){ 
-      qty += l.productQuantity; 
-      
-    } 
-    list.qty = qty; 
-     //console.log(list); 
-   } 
+    for(var list of lists){ 
+      let qty=0; 
+      for(var l of list.listProducts){
 
+        qty += l.productQuantity; 
+        
+      }
 
+      list.qty = qty; 
+     } 
  })
-     // Recuperation du nom de liste pour pouvoir le modifier sur le tpl section
-   })
+})
 
 .controller('SectionsCtrl',function($scope,$http,$stateParams,$rootScope,BASE_URL){
 
@@ -145,7 +143,6 @@ angular.module('starter.controllers', [])
         $scope.categories = response;
 
         //console.log(response);
-
       }
       else{
         console.log("fail");
@@ -221,8 +218,6 @@ angular.module('starter.controllers', [])
 
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
 
-  console.log(url)
-
   $http.get(url).success(function(response){
 
    if(response){
@@ -235,31 +230,27 @@ angular.module('starter.controllers', [])
        console.log("fail");
      }
 
-   })
+   });
+
   $scope.checkboxBasket = function(checkbox,idElement){
 
-
-
-    var url=BASE_URL.base+'/lists/'+$rootScope.listId+'/element/'+idElement;
+    var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/element/'+idElement;
    
-    if(checkbox){
-      checkbox = false;
-    }else{
-      checkbox = true;
+    //console.log(checkbox);
+
+    var el = {
+      isInBasket: checkbox
     }
 
-     console.log(url, checkbox);
-    var el= {
-    "isInBasket": checkbox
-    }
     $http.patch(url,JSON.stringify(el)).success(function(repsonse){
+
         console.log(response);
+    },function(error){
+      console.log(error);
     })
-    console.log(url);
-
-
-
+   //console.log(url);
   }
+
 })
 
 .controller('ChoiceMode',function(){
@@ -272,74 +263,75 @@ angular.module('starter.controllers', [])
   var geoloc = $cordovaGeolocation;
   var posOptions = {timeout : 10000, enableHighAccuracy : false};
   
-  geoloc.getCurrentPosition(posOptions).then(function (position) {
+    geoloc.getCurrentPosition(posOptions).then(function (position) {
 
 
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
 
-    var el = {
-      lat: lat,
-      lng: lng 
-    };
+      var el = {
+        lat: lat,
+        lng: lng 
+      };
 
-    $ionicLoading.show({
+      $ionicLoading.show({
 
-      template:'Loading....',
-      duration: 3000}).then(function(){
+        template:'Loading....',
+        duration: 3000}).then(function(){
 
-        if(el.lat != null && el.lng != null){
+          if(el.lat != null && el.lng != null){
 
-          $http.post(url,JSON.stringify(el)).success(function(response){
-                //$ionicBackdrop.release();
-                $scope.shopList = response;
-              });
-        }
+            $http.post(url,JSON.stringify(el)).success(function(response){
+                  //$ionicBackdrop.release();
+                  $scope.shopList = response;
+                });
+          }
+        });
       });
 
-    });
 // TO DO
-$scope.confirmShopToList = function(){
-  $scope.modal1Data = {};
-  $ionicModal.fromTemplateUrl('templates/modal1.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+    $scope.confirmShopToList = function(){
+      $scope.modal1Data = {};
+      $ionicModal.fromTemplateUrl('templates/modal1.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
 
-  $scope.closeModal1 = function() {
-    $scope.modal.hide();
-  };
+      $scope.closeModal1 = function() {
+        $scope.modal.hide();
+      };
 
-  $scope.model1 = function() {
-    $scope.modal.show();
-  };
+      $scope.model1 = function() {
+        $scope.modal.show();
+      };
 
-  $scope.doModal1 = function() {
-    console.log('Doing Modal1', $scope.modal1Data);
+      $scope.doModal1 = function() {
+        console.log('Doing Modal1', $scope.modal1Data);
 
-    $timeout(function() {
-      $scope.closeUseful();
-    }, 1000);
-  };
-};
-
-$scope.LinkShopList = function(listId, shopid){
-
-  console.log(listId, shopid);
-
-  var url= BASE_URL.base+"/lists/"+listId;
-
-  var el={
-    "shop": {
-      "id": shopid }
+        $timeout(function() {
+          $scope.closeUseful();
+        }, 1000);
+      };
     };
 
-    $http.patch(url,JSON.stringify(el)).success(
-      function(response){
-        console.log(response);
-      })
-  };
+    $scope.LinkShopList = function(listId, shopid){
+
+      console.log(listId, shopid);
+
+      var url= BASE_URL.base+"/lists/"+listId;
+
+      var el={
+        "shop": {
+          "id": shopid }
+        };
+
+        $http.patch(url,JSON.stringify(el)).success(
+          function(response){
+            console.log(response);
+          })
+      };
+
 })
 
 
