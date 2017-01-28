@@ -3,8 +3,8 @@
 
  <div ng-controller="EstimateCtrl" ng-repeat="shop in shopList" class="row list">
      <!-- <img ng-src="{{shop.urlImage}}"/>  -->
-     <a ng-click="LinkShopList(listId, shop.idshop)">
-     <!-- <a ng-click="modal1.show(list)"> -->
+     <!-- <a ng-click="LinkShopList(listId, shop.idshop)"> -->
+     <a ng-click="modal2.showModal()">
      id : {{shop.idshop}}
      Magasin : {{shop.name}}
      Prix total {{shop.totalprice | number:2}} € 

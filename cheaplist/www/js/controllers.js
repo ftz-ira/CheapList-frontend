@@ -68,28 +68,24 @@ angular.module('starter.controllers', [])
 .controller('SectionsCtrl',function($scope,$http,$stateParams,$rootScope,BASE_URL){
 
       // passage de l'id de liste pour ajouter les produits
-      $scope.shouldShowDelete = false;
-      $scope.shouldShowReorder = false;
-      $scope.listCanSwipe = true
-      
-      $rootScope.listId = $stateParams.listId;
+        
+        $rootScope.listId = $stateParams.listId;
 
+        var url = BASE_URL.base+'/sections';
+        //console.log(url)
 
-      var url = BASE_URL.base+'/sections';
-      //console.log(url)
+        $http.get(url).success(function(response){
 
-      $http.get(url).success(function(response){
+            if(response){
+            //sections = response;
+            $scope.sections = response;
 
-        if(response){
-        //sections = response;
-        $scope.sections = response;
+           // console.log("section ok go to categories");
 
-       // console.log("section ok go to categories");
-
-     }else{
-      console.log("fail");
-    }
-  });
+           }else{
+            console.log("fail");
+          }
+        });
 
       $scope.saveSectionListName =  function(){
 
@@ -128,7 +124,7 @@ angular.module('starter.controllers', [])
       $scope.clearSectionListName =  function(){
         $scope.listName = null;
       }
-    })
+})
 
 .controller('CategoriesCtrl',function($scope, $stateParams,$http,BASE_URL){
     //console.log($stateParams.sectionId);
@@ -148,73 +144,62 @@ angular.module('starter.controllers', [])
         console.log("fail");
       }
     })
-  })
+})
 
 .controller('ProductsCtrl', function($stateParams,$rootScope,$scope,$http,$templateCache,BASE_URL,userData){
 
- var url = BASE_URL.base+'/categories/'+$stateParams.categoriesId+'/products/';
+   var url = BASE_URL.base+'/categories/'+$stateParams.categoriesId+'/products/';
 
- this.userdata = userData;
+   this.userdata = userData;
 
- $http.get(url).success(function(response){
-
-  if(response){
-    //console.log(response);
-    $scope.products = response;
-
-  }
-  else{
-    console.log("fail");
-  }
-})
-
-
- $scope.addToList = function(productQuantity,listId,productId,$ionicModal){
-
-    /*if(productQuantity >= 0){
-    var new_quantity = productQuantity + opt;
-    $scope.productQuantity = new_quantity >= 0 ?new_quantity : 0;
-  }*/
-
-  var url2 = BASE_URL.base+'/lists/'+listId+'/frantz';
-
-  var el = {
-    idProduct : productId,
-    productQuantity : productQuantity
-  };
-    //console.log(JSON.stringify(el));
-
-    $http.patch(url2, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
-    .success(
-      function (response){
+     $http.get(url).success(function(response){
 
         if(response){
-                  //sections = response;
-                  //console.log(response);
-                  // console.log("Seb",userData.getListById(listId));
-                  userData.getListById(listId).listProducts = response;
+          //console.log(response);
+          $scope.products = response;
 
-                }else{
-                  console.log("fail");
-                }
-              },function(error){
-                console.log(error);
-              })
-  };
+        }
+        else{
+          console.log("fail");
+        }
+      });
+
+      $scope.addToList = function(productQuantity,listId,productId,$ionicModal){
+
+      /*if(productQuantity >= 0){
+      var new_quantity = productQuantity + opt;
+      $scope.productQuantity = new_quantity >= 0 ?new_quantity : 0;
+    }*/
+
+    var url2 = BASE_URL.base+'/lists/'+listId+'/frantz';
+
+    var el = {
+      idProduct : productId,
+      productQuantity : productQuantity
+    };
+      //console.log(JSON.stringify(el));
+
+      $http.patch(url2, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
+      .success(
+        function (response){
+
+          if(response){
+                    //sections = response;
+                    //console.log(response);
+                    // console.log("Seb",userData.getListById(listId));
+                    userData.getListById(listId).listProducts = response;
+
+                  }else{
+                    console.log("fail");
+                  }
+                },function(error){
+                  console.log(error);
+                })
+    };
 })
 
-.controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL){
+.controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL,$ionicModal){
 
-  $scope.scanBarcode = function() {
-    $cordovaBarcodeScanner.scan().then(function(imageData) {
-      alert(imageData.text);
-      console.log("Barcode Format -> " + imageData.format);
-      console.log("Cancelled -> " + imageData.cancelled);
-    }, function(error) {
-     console.log("An error happened -> " + error);
-   });
-    alert("testsseb");
-  };
 
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
 
@@ -231,6 +216,32 @@ angular.module('starter.controllers', [])
      }
 
    });
+
+  $scope.scanBarcode = function() {
+    $cordovaBarcodeScanner.scan().then(function(imageData) {
+      
+      alert(imageData.text);
+
+     var el = {
+            idEan : imageData.text,
+            idCategory : 37
+            }
+            // var el = {
+            // idEan : 3038359002465,
+            // idCategory : 37,
+            // }
+
+
+
+      
+      console.log("Barcode Format -> " + imageData.format);
+      console.log("Cancelled -> " + imageData.cancelled);
+
+    }, function(error) {
+     console.log("An error happened -> " + error);
+   });
+  };
+  // GET LIST PRODUCTS FROM ONE LIST
 
   $scope.checkboxBasket = function(checkbox,idElement){
 
@@ -250,7 +261,6 @@ angular.module('starter.controllers', [])
     })
    //console.log(url);
   }
-
 })
 
 .controller('ChoiceMode',function(){
@@ -258,80 +268,50 @@ angular.module('starter.controllers', [])
 
 .controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading,$ionicModal){
 
-  var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
+    var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
 
-  var geoloc = $cordovaGeolocation;
-  var posOptions = {timeout : 10000, enableHighAccuracy : false};
+    var geoloc = $cordovaGeolocation;
+    var posOptions = {timeout : 10000, enableHighAccuracy : false};
   
     geoloc.getCurrentPosition(posOptions).then(function (position) {
 
 
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
 
-      var el = {
-        lat: lat,
-        lng: lng 
-      };
-
-      $ionicLoading.show({
-
-        template:'Loading....',
-        duration: 3000}).then(function(){
-
-          if(el.lat != null && el.lng != null){
-
-            $http.post(url,JSON.stringify(el)).success(function(response){
-                  //$ionicBackdrop.release();
-                  $scope.shopList = response;
-                });
-          }
-        });
-      });
-
-// TO DO
-    $scope.confirmShopToList = function(){
-      $scope.modal1Data = {};
-      $ionicModal.fromTemplateUrl('templates/modal1.html', {
-        scope: $scope
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
-
-      $scope.closeModal1 = function() {
-        $scope.modal.hide();
-      };
-
-      $scope.model1 = function() {
-        $scope.modal.show();
-      };
-
-      $scope.doModal1 = function() {
-        console.log('Doing Modal1', $scope.modal1Data);
-
-        $timeout(function() {
-          $scope.closeUseful();
-        }, 1000);
-      };
-    };
-
-    $scope.LinkShopList = function(listId, shopid){
-
-      console.log(listId, shopid);
-
-      var url= BASE_URL.base+"/lists/"+listId;
-
-      var el={
-        "shop": {
-          "id": shopid }
+        var el = {
+          lat: lat,
+          lng: lng 
         };
 
-        $http.patch(url,JSON.stringify(el)).success(
-          function(response){
-            console.log(response);
-          })
-      };
+        $ionicLoading.show({ template:'Loading....', duration: 3000}).then(function(){
 
+            if(el.lat != null && el.lng != null){
+
+                $http.post(url,JSON.stringify(el)).success(function(response){
+                    //$ionicBackdrop.release();
+                    $scope.shopList = response;
+                });
+            }
+          });
+      });
+
+      $scope.LinkShopList = function(listId, shopid){
+
+        console.log(listId, shopid);
+
+        var url= BASE_URL.base+"/lists/"+listId;
+
+        var el={
+          "shop": {
+            "id": shopid }
+          };
+
+          $http.patch(url,JSON.stringify(el)).success(
+            function(response){
+              console.log(response);
+            })
+        };
 })
 
 
