@@ -1,0 +1,11 @@
+<ion-view view-title="Selection categorie">
+  <ion-content>
+
+	 <div class="list" >
+		 <a ng-repeat="category in categories" class="item item-thumbnail-left">
+		     <h2 ng-click="scanBarcode(category.id)" >{{category.name}}--{{category.id}}</h2>
+		 </a>
+	</div>
+
+ </ion-content>
+</ion-view>

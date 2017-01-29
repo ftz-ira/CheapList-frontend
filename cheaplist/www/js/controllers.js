@@ -180,136 +180,104 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL,$ionicModal,$location){
+.controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,BASE_URL,$ionicModal){
 
 
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
 
   $http.get(url).success(function(response){
 
-   if(response){
-
      $scope.listshoptime= response;
 
        console.log(response);
 
-     }else{
-       console.log("fail");
-     }
-
+   },function(error){
+    console.log(error);
    });
-
-  // $scope.modalScanBarcode = function(){
-
-  //     $ionicModal.fromTemplateUrl('templates/modal_add_category.html', {
-  //           scope: $scope
-  //         }).then(function(modal2) {
-  //           $scope.modal2 = modal2;
-  //         });
-
-        
-  //         $scope.closeEstimate = function() {
-
-  //           $scope.modal2.hide();
-  //         };
-
-        
-  //         $scope.estimate = function() {
-  //           $scope.modal2.show();
-  //         };
-  // }
-  
       
-      $ionicModal.fromTemplateUrl('templates/modal_set_product_category.html', {
-            scope: $scope
-          }).then(function(modal3) {
-            $scope.modal3 = modal3;
-          });
-
-        
-          $scope.closeCategory = function(cateId) {
-
-            
-            console.log(cateId);
-            $scope.modal3.hide();
-            this.scanBarcode(cateId);
-          
-
-
-          };
-        
-          $scope.selectCategory = function() {
-
-            var url = BASE_URL.base+'/categories/';
-            //console.log(url);
-            $http.get(url).success(function(response){
-                   
-                    $scope.categories = response;
-                     console.log($scope.categories);
-                    
-                });
-            $scope.modal3.show();
-          };
-
-  
-
-  $scope.scanBarcode = function(cateId) {
-
-   
-
-    $cordovaBarcodeScanner.scan().then(function(imageData) {
+  // $ionicModal.fromTemplateUrl('templates/modal_set_product_category.html', { 
+  //         scope: $scope }).then(function(modal3) {
+  //           $scope.modal3 = modal3;
+  //       });
       
-      var url = BASE_URL.base+'/products';
-      //alert(imageData.text);
-
-     var el = {
-            idEan : imageData.text,
-            idCategory : cateId
-            }
-            // var el = {
-            // idEan : 3038359002465,
-            // idCategory : 37
-            // }
+  //     $scope.closeCategory = function(cateId) {
       
-      //console.log("Barcode Format -> " + imageData.format);
-      //console.log("Cancelled -> " + imageData.cancelled);
+  //       console.log(cateId);
+  //       $scope.modal3.hide();
+  //        this.scanBarcode(cateId);
+  //       };
 
 
-      $http.post(url,JSON.stringify(el)).success(function(response){
-
-          //$scope.listshoptime.push(repsonse);
-          console.log(response);
-          $scope.product = response;
-          $location.path('/#/app/productsview');
-      })
-       
-
-    }, function(error) {
-     console.log("An error happened -> " + error);
-   });
-
-  };
   // GET LIST PRODUCTS FROM ONE LIST
 
-  $scope.checkboxBasket = function(checkbox,idElement){
+    $scope.checkboxBasket = function(checkbox,idElement){
 
-    var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/element/'+idElement;
-   
-    //console.log(checkbox);
+      var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/element/'+idElement;
+     
 
-    var el = {
-      isInBasket: checkbox
-    }
+      var el = {
+        isInBasket: checkbox
+      }
 
-    $http.patch(url,JSON.stringify(el)).success(function(repsonse){
+      $http.patch(url,JSON.stringify(el)).success(function(repsonse){
 
-        console.log(response);
-    },function(error){
-      console.log(error);
-    })
-   //console.log(url);
-  }
+          console.log(response);
+      },function(error){
+        console.log(error);
+      });
+
+    };
+
+
 })
+
+.controller('selecCategoryCtrl',function(BASE_URL,$http,$scope,$cordovaBarcodeScanner) {
+
+        var url = BASE_URL.base+'/categories/';
+        //console.log(url);
+        $http.get(url).success(function(response){
+               
+               $scope.categories = response;
+                 //console.log($scope.categories);
+            });
+
+    $scope.scanBarcode = function(cateId) {
+
+
+
+      $cordovaBarcodeScanner.scan().then(function(imageData) {
+        
+        var url = BASE_URL.base+'/products';
+       // alert(imageData.text);
+
+       var el = {
+              idEan : imageData.text,
+              idCategory : cateId
+              }
+
+              // var el = {
+              // idEan : 3038359002465,
+              // idCategory : 37
+              // }
+        
+        //console.log("Barcode Format -> " + imageData.format);
+        //console.log("Cancelled -> " + imageData.cancelled);
+
+
+        $http.post(url,JSON.stringify(el)).success(function(response){
+
+            //$scope.listshoptime.push(repsonse);
+            console.log(response);
+            //$scope.product = response;
+        })
+         
+      }, function(error) {
+       console.log("An error happened -> " + error);
+     });
+
+    };
+      
+  })
 
 .controller('ChoiceMode',function(){
 })

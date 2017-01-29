@@ -51,12 +51,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-  .state('app.productsview', {
-    url: '/productsview',
+  .state('app.selectCategory', {
+    url: '/selecCategory',
     views: {
       'menuContent': {
-        templateUrl: 'templates/products_view.html',
-        controller: 'ShoptTimeCtrl'
+        templateUrl: 'templates/selectCategory.html',
+        controller: 'selecCategoryCtrl'
       }
     }
   })
