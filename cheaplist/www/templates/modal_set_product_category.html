@@ -1,0 +1,18 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Categorie selection</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeCategory()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+
+	 <div class="list" >
+		 <a ng-repeat="category in categories" class="item item-thumbnail-left">
+		     <h2 ng-click="closeCategory(category.id)" >{{category.name}}--{{category.id}}</h2>
+		 </a>
+	</div>
+
+  </ion-content>
+</ion-modal-view>

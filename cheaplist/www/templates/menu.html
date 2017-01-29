@@ -32,11 +32,13 @@
   </ion-side-menu>
 </ion-side-menus>
  <ion-footer-bar align-title="center" class="bar-assertive">
-      <div class="buttons">
-        <button class="button">Left Button</button>
-      </div>
-      <h1 class="title"><a ng-href="#/app/estimate/{{listId}}"> FINI </a></h1> 
-      <div class="buttons" ng-click="doSomething()">
-        <button class="button">Right Button</button>
-      </div>
-    </ion-footer-bar>
+      
+        <a class="button" ng-href="/#/app/hompage">Accueil</button>
+     
+      <span ng-if="listId !== undefined">
+      <h1  class="title"><a ng-href="#/app/estimate/{{listId}}"> FINI </a></h1> 
+      </span>
+     
+        <a class="button">Right Button</a>
+      
+  </ion-footer-bar>

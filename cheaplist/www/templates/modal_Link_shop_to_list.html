@@ -1,0 +1,27 @@
+
+<ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Association</h1>
+    </ion-header-bar>
+    <ion-content>
+
+    <div class="card">
+  <div class="item item-divider">
+    {{shop.name}} {{shop.adresse}}
+  </div>
+  <div class="item item-text-wrap">
+   Confirmer l'association de ce magasin pour cette liste
+  <div class="item item-divider">
+  	<div class="row">
+	   	<a class="button button-small button-positive" ng-click="LinkShopList(listId, shop.idshop)">Valider</a>
+	    <a type="button button-small button-assertive" ng-click="closeEstimate()" class="button">Annuler</a>
+    </div>
+  </div>
+</div>
+
+
+    
+    
+     	
+    </ion-content>
+  </ion-modal-view>

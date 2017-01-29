@@ -10,10 +10,10 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.loginData = {}; 
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('templates/modal_login.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -136,7 +136,7 @@ angular.module('starter.controllers', [])
 
       if(response){
 
-        $scope.categories = response;
+        $rootScope.categories = response;
 
         //console.log(response);
       }
@@ -148,9 +148,9 @@ angular.module('starter.controllers', [])
 
 .controller('ProductsCtrl', function($stateParams,$rootScope,$scope,$http,$templateCache,BASE_URL,userData){
 
-   var url = BASE_URL.base+'/categories/'+$stateParams.categoriesId+'/products/';
+    var url = BASE_URL.base+'/categories/'+$stateParams.categoriesId+'/products/';
 
-   this.userdata = userData;
+    this.userdata = userData;
 
      $http.get(url).success(function(response){
 
@@ -163,42 +163,29 @@ angular.module('starter.controllers', [])
           console.log("fail");
         }
       });
-
+     // GESTION DE LA QUANTITE DE PRODUIT DANS UNE LISTE
       $scope.addToList = function(productQuantity,listId,productId,$ionicModal){
 
-      /*if(productQuantity >= 0){
-      var new_quantity = productQuantity + opt;
-      $scope.productQuantity = new_quantity >= 0 ?new_quantity : 0;
-    }*/
+          var url2 = BASE_URL.base+'/lists/'+listId+'/frantz';
 
-    var url2 = BASE_URL.base+'/lists/'+listId+'/frantz';
+          var el = {
+            idProduct : productId,
+            productQuantity : productQuantity
+          };
+            //console.log(JSON.stringify(el));
 
-    var el = {
-      idProduct : productId,
-      productQuantity : productQuantity
-    };
-      //console.log(JSON.stringify(el));
+            $http.patch(url2, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
+            .success( function (response){
+                   
+                userData.getListById(listId).listProducts = response;
 
-      $http.patch(url2, JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} })
-      .success(
-        function (response){
-
-          if(response){
-                    //sections = response;
-                    //console.log(response);
-                    // console.log("Seb",userData.getListById(listId));
-                    userData.getListById(listId).listProducts = response;
-
-                  }else{
-                    console.log("fail");
-                  }
                 },function(error){
                   console.log(error);
                 })
     };
 })
 
-.controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL,$ionicModal){
+.controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,$cordovaBarcodeScanner,BASE_URL,$ionicModal,$location){
 
 
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
@@ -217,29 +204,95 @@ angular.module('starter.controllers', [])
 
    });
 
-  $scope.scanBarcode = function() {
+  // $scope.modalScanBarcode = function(){
+
+  //     $ionicModal.fromTemplateUrl('templates/modal_add_category.html', {
+  //           scope: $scope
+  //         }).then(function(modal2) {
+  //           $scope.modal2 = modal2;
+  //         });
+
+        
+  //         $scope.closeEstimate = function() {
+
+  //           $scope.modal2.hide();
+  //         };
+
+        
+  //         $scope.estimate = function() {
+  //           $scope.modal2.show();
+  //         };
+  // }
+  
+      
+      $ionicModal.fromTemplateUrl('templates/modal_set_product_category.html', {
+            scope: $scope
+          }).then(function(modal3) {
+            $scope.modal3 = modal3;
+          });
+
+        
+          $scope.closeCategory = function(cateId) {
+
+            
+            console.log(cateId);
+            $scope.modal3.hide();
+            this.scanBarcode(cateId);
+          
+
+
+          };
+        
+          $scope.selectCategory = function() {
+
+            var url = BASE_URL.base+'/categories/';
+            //console.log(url);
+            $http.get(url).success(function(response){
+                   
+                    $scope.categories = response;
+                     console.log($scope.categories);
+                    
+                });
+            $scope.modal3.show();
+          };
+
+  
+
+  $scope.scanBarcode = function(cateId) {
+
+   
+
     $cordovaBarcodeScanner.scan().then(function(imageData) {
       
-      alert(imageData.text);
+      var url = BASE_URL.base+'/products';
+      //alert(imageData.text);
 
      var el = {
             idEan : imageData.text,
-            idCategory : 37
+            idCategory : cateId
             }
             // var el = {
             // idEan : 3038359002465,
-            // idCategory : 37,
+            // idCategory : 37
             // }
-
-
-
       
-      console.log("Barcode Format -> " + imageData.format);
-      console.log("Cancelled -> " + imageData.cancelled);
+      //console.log("Barcode Format -> " + imageData.format);
+      //console.log("Cancelled -> " + imageData.cancelled);
+
+
+      $http.post(url,JSON.stringify(el)).success(function(response){
+
+          //$scope.listshoptime.push(repsonse);
+          console.log(response);
+          $scope.product = response;
+          $location.path('/#/app/productsview');
+      })
+       
 
     }, function(error) {
      console.log("An error happened -> " + error);
    });
+
   };
   // GET LIST PRODUCTS FROM ONE LIST
 
@@ -291,10 +344,45 @@ angular.module('starter.controllers', [])
                 $http.post(url,JSON.stringify(el)).success(function(response){
                     //$ionicBackdrop.release();
                     $scope.shopList = response;
+                   // console.log(response)
                 });
             }
           });
       });
+
+     
+          // Form data for the login modal
+          //$scope.loginData = {}; 
+
+          // Create the login modal that we will use later
+          $ionicModal.fromTemplateUrl('templates/modal_Link_shop_to_list.html', {
+            scope: $scope
+          }).then(function(modal2) {
+            $scope.modal2 = modal2;
+          });
+
+          // Triggered in the login modal to close it
+          $scope.closeEstimate = function() {
+
+            $scope.modal2.hide();
+          };
+
+          // Open the login modal
+          $scope.estimate = function() {
+            $scope.modal2.show();
+          };
+
+          // Perform the login action when the user submits the login form
+          // $scope.doValidate = function() {
+          //   console.log('Doing login', $scope.loginData);
+
+          //   // Simulate a login delay. Remove this and replace with your login
+          //   // code if using a login system
+          //   $timeout(function() {
+          //     $scope.closeEstimate();
+          //   }, 1000);
+          // };
+      
 
       $scope.LinkShopList = function(listId, shopid){
 
@@ -309,14 +397,18 @@ angular.module('starter.controllers', [])
 
           $http.patch(url,JSON.stringify(el)).success(
             function(response){
+              
               console.log(response);
+              
+              $scope.modal2.hide();
+
+              // fermeture du modal
+              $location.path( "/#/app/homepage" );
+
+
             })
         };
 })
-
-
-
-
 
 
 

@@ -24,7 +24,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-  
   .state('app.categories', {
     url: '/categories/:sectionId',
     views: {
@@ -52,6 +51,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
+  .state('app.productsview', {
+    url: '/productsview',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/products_view.html',
+        controller: 'ShoptTimeCtrl'
+      }
+    }
+  })
   .state('app.sections', {
     url: '/sections/:listId',
     views: {
@@ -61,7 +69,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-   .state('app.choicemode', {
+  .state('app.choicemode', {
     url: '/choicemode',
     views: {
       'menuContent': {
@@ -70,7 +78,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     }
   })
-    .state('app.estimate', {
+  .state('app.estimate', {
     url: '/estimate/:listId',
     views: {
       'menuContent': {
