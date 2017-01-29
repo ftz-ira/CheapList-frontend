@@ -136,7 +136,7 @@ angular.module('starter.controllers', [])
 
       if(response){
 
-        $rootScope.categories = response;
+        $scope.categories = response;
 
         //console.log(response);
       }
