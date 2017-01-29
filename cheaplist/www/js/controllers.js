@@ -134,16 +134,11 @@ angular.module('starter.controllers', [])
 
     $http.get(url).success(function(response){
 
-      if(response){
-
         $scope.categories = response;
 
         //console.log(response);
-      }
-      else{
-        console.log("fail");
-      }
-    })
+      });
+  
 })
 
 .controller('ProductsCtrl', function($stateParams,$rootScope,$scope,$http,$templateCache,BASE_URL,userData){
