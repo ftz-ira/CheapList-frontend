@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
   $ionicModal.fromTemplateUrl('templates/modal_login.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+      $scope.modal = modal;
   });
 
   // Triggered in the login modal to close it
@@ -194,21 +194,6 @@ angular.module('starter.controllers', [])
    },function(error){
     console.log(error);
    });
-      
-  // $ionicModal.fromTemplateUrl('templates/modal_set_product_category.html', { 
-  //         scope: $scope }).then(function(modal3) {
-  //           $scope.modal3 = modal3;
-  //       });
-      
-  //     $scope.closeCategory = function(cateId) {
-      
-  //       console.log(cateId);
-  //       $scope.modal3.hide();
-  //        this.scanBarcode(cateId);
-  //       };
-
-
-  // GET LIST PRODUCTS FROM ONE LIST
 
     $scope.checkboxBasket = function(checkbox,idElement){
 
@@ -228,7 +213,6 @@ angular.module('starter.controllers', [])
 
     };
 
-
 })
 
 .controller('selecCategoryCtrl',function(BASE_URL,$http,$scope,$cordovaBarcodeScanner) {
@@ -244,32 +228,37 @@ angular.module('starter.controllers', [])
     $scope.scanBarcode = function(cateId) {
 
 
-
       $cordovaBarcodeScanner.scan().then(function(imageData) {
         
-        var url = BASE_URL.base+'/products';
-       // alert(imageData.text);
-
-       var el = {
-              idEan : imageData.text,
-              idCategory : cateId
-              }
-
-              // var el = {
-              // idEan : 3038359002465,
-              // idCategory : 37
-              // }
         
-        //console.log("Barcode Format -> " + imageData.format);
-        //console.log("Cancelled -> " + imageData.cancelled);
+        if(typeof imageData !== 'undefined' ){
+
+          var url = BASE_URL.base+'/products';
+         
+
+         var el = {
+                idEan : imageData.text,
+                idCategory : cateId
+                }
+
+                // var el = {
+                // idEan : 3038359002465,
+                // idCategory : 37
+                // }
+          
+          //console.log("Barcode Format -> " + imageData.format);
+          //console.log("Cancelled -> " + imageData.cancelled);
 
 
-        $http.post(url,JSON.stringify(el)).success(function(response){
+          $http.post(url,JSON.stringify(el)).success(function(response){
 
-            //$scope.listshoptime.push(repsonse);
-            console.log(response);
-            //$scope.product = response;
-        })
+              //$scope.listshoptime.push(repsonse);
+              //console.log(response);
+              $scope.product = response;
+               //alert(imageData.text);
+               alert(response.brand,response.name);
+          });
+      }
          
       }, function(error) {
        console.log("An error happened -> " + error);
