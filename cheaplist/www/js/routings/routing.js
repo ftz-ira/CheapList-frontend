@@ -52,11 +52,39 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
   .state('app.selectCategory', {
-    url: '/selecCategory',
+    url: '/selecCategory/:listId',
     views: {
       'menuContent': {
         templateUrl: 'templates/selectCategory.html',
         controller: 'selecCategoryCtrl'
+      }
+    }
+  })
+
+  .state('app.checkProduct', {
+    url: '/checkproduct',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/check_product.html',
+        //controller: 'checkProductCtrl'
+      }
+    }
+  })
+  .state('app.saveProduct', {
+    url: '/saveproduct/:listId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/shoptime.html',
+        controller: 'SaveProductCtrl'
+      }
+    }
+  })
+  .state('app.cancelProduct', {
+    url: '/cancelproduct/:listId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/shoptime.html',
+        controller: 'CancelProductCtrl'
       }
     }
   })

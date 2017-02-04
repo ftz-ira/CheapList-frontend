@@ -1,0 +1,29 @@
+<ion-view view-title="valider le produit">
+ <ion-content> 
+
+ 
+     <!-- <img ng-src="{{shop.urlImage}}"/>  -->
+     <!-- <a ng-click="LinkShopList(listId, shop.idshop)"> -->
+
+    <div class="list card" >
+
+
+
+		  <div class="item item-body">
+		    <img class="full-image" src="{{productsAA.url}}" width="70%"/> 
+		  </div>
+		   <div class="item ">
+		    <h2>{{productsAA.name}}</h2>
+		    <p>{{productsAA.brand}}</p>
+		    <p>{{productsAA.unitName}}</p>
+		    <p>{{productsAA.listId}}</p>
+		  </div>
+	
+	</div>
+	<div ng-controller="SaveProductCtrl">
+		<a ng-click="saveP(productsAA,'save')" class="button button-balanced" >Valider</a>
+		<a ng-click="saveP(productsAA,'cancel')" class="button button-assertive">Annuler</a>
+	</div>
+
+</ion-content>
+</ion-view>

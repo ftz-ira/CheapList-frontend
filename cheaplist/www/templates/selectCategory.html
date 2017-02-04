@@ -1,13 +1,13 @@
 <ion-view view-title="Selection categorie">
   <ion-content>
 
-	 
-		 <a ng-repeat="category in categories" class="item item-thumbnail-left" ng-click="scanBarcode(category.id)">
-		    <div class="list" >
-          <h2  >{{category.name}}--{{category.id}}</h2>
-         </div>
-		 </a>
-	
-    {{ product }}
+	 <a ng-repeat="category in categories" class="item item-thumbnail-left" ng-click="scanBarcode(category.id, categories.listId)">
+	    <div class="list" >
+
+      		<h2>{{category.name}}</h2>
+ 
+     	</div>
+	 </a>
+		
  </ion-content>
 </ion-view>

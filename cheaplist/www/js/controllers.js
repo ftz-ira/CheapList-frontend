@@ -138,7 +138,6 @@ angular.module('starter.controllers', [])
 
         //console.log(response);
       });
-  
 })
 
 .controller('ProductsCtrl', function($stateParams,$rootScope,$scope,$http,$templateCache,BASE_URL,userData){
@@ -186,7 +185,7 @@ angular.module('starter.controllers', [])
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
 
   $http.get(url).success(function(response){
-
+      response.listId = $stateParams.listId;
      $scope.listshoptime= response;
 
        console.log(response);
@@ -207,70 +206,117 @@ angular.module('starter.controllers', [])
       $http.patch(url,JSON.stringify(el)).success(function(repsonse){
 
           console.log(response);
+
       },function(error){
         console.log(error);
       });
 
     };
-
 })
 
-.controller('selecCategoryCtrl',function(BASE_URL,$http,$scope,$cordovaBarcodeScanner) {
+.controller('selecCategoryCtrl',function(BASE_URL,$http,$scope,$cordovaBarcodeScanner,$rootScope,$location,$stateParams) {
 
         var url = BASE_URL.base+'/categories/';
-        //console.log(url);
-        $http.get(url).success(function(response){
-               
-               $scope.categories = response;
-                 //console.log($scope.categories);
-            });
-
-    $scope.scanBarcode = function(cateId) {
-
-
-      $cordovaBarcodeScanner.scan().then(function(imageData) {
-        
-        
-        if(typeof imageData !== 'undefined' ){
-
-          var url = BASE_URL.base+'/products';
-         
-
-         var el = {
-                idEan : imageData.text,
-                idCategory : cateId
-                }
-
-                // var el = {
-                // idEan : 3038359002465,
-                // idCategory : 37
-                // }
-          
-          //console.log("Barcode Format -> " + imageData.format);
-          //console.log("Cancelled -> " + imageData.cancelled);
-
-
-          $http.post(url,JSON.stringify(el)).success(function(response){
-
-              //$scope.listshoptime.push(repsonse);
-              //console.log(response);
-              $scope.product = response;
-               //alert(imageData.text);
-               alert(response.brand,response.name);
-          });
-      }
-         
-      }, function(error) {
-       console.log("An error happened -> " + error);
-     });
-
-    };
       
-  })
+        $http.get(url).success(function(response){
+
+               response.listId = $stateParams.listId;
+               $scope.categories = response;
+                 console.log($scope.categories);
+        });
+
+    // $scope.scanBarcode = function(cateId) {
+
+    //   $cordovaBarcodeScanner.scan().then(function(imageData) {
+        
+    //     if(typeof imageData !== 'undefined' ){
+
+    //       var url = BASE_URL.base+'/products';
+
+    //       var el = {
+    //             idEan : imageData.text,
+    //             idCategory : cateId
+    //             }
+
+    //       $http.post(url,JSON.stringify(el)).success(function(response){
+
+    //           $scope.product = response;
+               
+    //            $location.path( "app/checkproduct" );
+
+              
+    //       });
+    //     }
+    //   }, function(error) {
+    //     console.log("An error happened -> " + error);
+    //  });
+    // };
+
+
+ $scope.scanBarcode = function(cateId,listId) {
+
+  var response2 =  {
+      id: 36380,
+      brand: "Panzani",
+      name: "Coquillettes Tomates & Épinards",
+      unitName: "500 g",
+      url: "https://static.openfoodfacts.org/images/products/303/835/900/2465/front_fr.3.400.jpg"
+    };
+   // alert("ici");
+   response2.listId = listId;
+    $rootScope.productsAA = response2;
+
+     $location.path( "app/checkproduct");
+   } 
+
+
+})
+.controller('SaveProductCtrl',function(BASE_URL,$stateParams,$http,$scope){
+
+  
+  $scope.saveP = function(product,opt){
+      
+
+    if(opt == "save"){
+
+       var url = BASE_URL.base+"/lists/"+product.listId+"/frantz/";
+
+      var el = {
+            "idProduct":product.id,
+            "productQuantity":1
+        };
+        console.log(JSON.stringify(el));
+
+         $http.patch(url,JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(function(response){
+
+          $location.path( "app/shoptime");
+
+        },function(error){
+          console.log(error);
+        });
+    }
+    else{
+
+
+    }  
+
+  }
+ 
+})
+.controller('CancelproductCtrl',function($stateParams){
+
+  console.log($stateParams.listId);
+
+   $http.get(url).success(function(response){
+
+               response.listId = $stateParams.listId;
+               $scope.categories = response;
+                 console.log($scope.categories);
+        });
+})
 
 .controller('ChoiceMode',function(){
 })
-
 .controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading,$ionicModal){
 
     var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
@@ -347,7 +393,7 @@ angular.module('starter.controllers', [])
             "id": shopid }
           };
 
-          $http.patch(url,JSON.stringify(el)).success(
+          $http.patch(url,JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(
             function(response){
               
               console.log(response);

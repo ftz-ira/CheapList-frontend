@@ -2,12 +2,9 @@
 <ion-content>
 
 <div class="list ">
-
+   
   <div ng-repeat="element in listshoptime " class="row item item-thumbnail-left product-detail">
-     <!-- <div class="col col-33">
-      <img ng-src="{{ product.url }}" >
-     </div> -->
-
+   
       <div class="col col-50">
         <div>
           <h3> Marque : {{element.product.brand}}</h3>
@@ -28,7 +25,7 @@
 <div class="row">
 
     <!-- <a class="button col button-energized" ng-click="scanBarcode()"> -->
-    <a class="button col button-energized" ng-href="#/app/selecCategory">
+    <a class="button col button-energized" ng-href="#/app/selecCategory/{{listshoptime.listId}}">
    
        Ajouter un nouveau produit
     </a>
