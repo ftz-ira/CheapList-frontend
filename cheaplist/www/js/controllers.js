@@ -182,13 +182,15 @@ angular.module('starter.controllers', [])
 .controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,BASE_URL,$ionicModal){
 
 
+console.log("ici");
+
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
 
   $http.get(url).success(function(response){
       response.listId = $stateParams.listId;
-     $scope.listshoptime= response;
+     $rootScope.listshoptime= response;
 
-       console.log(response);
+       //console.log(response);
 
    },function(error){
     console.log(error);
@@ -225,54 +227,54 @@ angular.module('starter.controllers', [])
                  //console.log($scope.categories);
         });
 
-    $scope.scanBarcode = function(cateId,listId) {
+    // $scope.scanBarcode = function(cateId,listId) {
 
-      $cordovaBarcodeScanner.scan().then(function(imageData) {
+    //   $cordovaBarcodeScanner.scan().then(function(imageData) {
         
-        if(typeof imageData !== 'undefined' ){
+    //     if(typeof imageData !== 'undefined' ){
 
-          var url = BASE_URL.base+'/products';
+    //       var url = BASE_URL.base+'/products';
 
-          var el = {
-                idEan : imageData.text,
-                idCategory : cateId
-                }
+    //       var el = {
+    //             idEan : imageData.text,
+    //             idCategory : cateId
+    //             }
 
-          $http.post(url,JSON.stringify(el)).success(function(response){
+    //       $http.post(url,JSON.stringify(el)).success(function(response){
 
-            response.listId = listId;
-            $rootScope.productsAA = response;
+    //         response.listId = listId;
+    //         $rootScope.productsAA = response;
 
-          $location.path( "app/checkproduct");
+    //       $location.path( "app/checkproduct");
 
               
-          });
-        }
-      }, function(error) {
-        console.log("An error happened -> " + error);
-     });
-    };
+    //       });
+    //     }
+    //   }, function(error) {
+    //     console.log("An error happened -> " + error);
+    //  });
+    // };
 
 
- //$scope.scanBarcode = function(cateId,listId) {
+ $scope.scanBarcode = function(cateId,listId) {
 
-    // var response2 =  {
-    //     id: 36380,
-    //     brand: "Panzani",
-    //     name: "Coquillettes Tomates & Épinards",
-    //     unitName: "500 g",
-    //     url: "https://static.openfoodfacts.org/images/products/303/835/900/2465/front_fr.3.400.jpg"
-    //   };
-     // alert("ici");
-    //  response2.listId = listId;
-    //   $rootScope.productsAA = response2;
+    var response2 =  {
+        id: 36380,
+        brand: "Panzani",
+        name: "Coquillettes Tomates & Épinards",
+        unitName: "500 g",
+        url: "https://static.openfoodfacts.org/images/products/303/835/900/2465/front_fr.3.400.jpg"
+      };
+     
+     response2.listId = listId;
+      $rootScope.productsAA = response2;
 
-    //    $location.path( "app/checkproduct");
-    // } 
+       $location.path( "app/checkproduct");
+    } 
 
 
 })
-.controller('SaveProductCtrl',function(BASE_URL,$stateParams,$http,$scope,$location){
+.controller('SaveProductCtrl',function(BASE_URL,$stateParams,$http,$scope,$location,$rootScope,$window){
 
   
   $scope.saveP = function(product,opt){
@@ -290,7 +292,15 @@ angular.module('starter.controllers', [])
 
          $http.patch(url,JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(function(response){
 
-          $location.path( "app/shoptime/"+product.listId);
+          response.listId = product.listId;
+
+           // $scope.listshoptime= "";
+           $rootScope.listshoptime= response;
+
+           //console.log($scope);
+
+        $window.history.go(-2);
+         
 
         },function(error){
           console.log(error);
@@ -303,17 +313,6 @@ angular.module('starter.controllers', [])
 
   }
  
-})
-.controller('CancelproductCtrl',function($stateParams){
-
-  console.log($stateParams.listId);
-
-   $http.get(url).success(function(response){
-
-               response.listId = $stateParams.listId;
-               $scope.categories = response;
-                 console.log($scope.categories);
-        });
 })
 
 .controller('ChoiceMode',function(){
