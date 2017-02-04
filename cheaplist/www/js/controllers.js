@@ -182,8 +182,6 @@ angular.module('starter.controllers', [])
 .controller('ShoptTimeCtrl',function($scope,$rootScope, $stateParams,$http,BASE_URL,$ionicModal){
 
 
-console.log("ici");
-
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
 
   $http.get(url).success(function(response){
@@ -214,6 +212,27 @@ console.log("ici");
       });
 
     };
+
+    $scope.setPrice = function(newPrice,idProduct,idShop){
+      //var newPrice = $scope.newPrice;
+      //console.log(newPrice);
+
+      var url = BASE_URL.base+"/prices/"+idProduct+"/shop/"+idShop;
+
+        var el = {
+            price: newPrice
+         }
+
+          $http.patch(url,JSON.stringify(el)).success(function(repsonse){
+
+          console.log(response);
+
+          },function(error){
+            console.log(error);
+          });
+
+
+    }
 })
 
 .controller('selecCategoryCtrl',function(BASE_URL,$http,$scope,$cordovaBarcodeScanner,$rootScope,$location,$stateParams) {
@@ -227,50 +246,49 @@ console.log("ici");
                  //console.log($scope.categories);
         });
 
-    // $scope.scanBarcode = function(cateId,listId) {
+    $scope.scanBarcode = function(cateId,listId) {
 
-    //   $cordovaBarcodeScanner.scan().then(function(imageData) {
+      $cordovaBarcodeScanner.scan().then(function(imageData) {
         
-    //     if(typeof imageData !== 'undefined' ){
+        if(typeof imageData !== 'undefined' ){
 
-    //       var url = BASE_URL.base+'/products';
+          var url = BASE_URL.base+'/products';
 
-    //       var el = {
-    //             idEan : imageData.text,
-    //             idCategory : cateId
-    //             }
+          var el = {
+                idEan : imageData.text,
+                idCategory : cateId
+                }
 
-    //       $http.post(url,JSON.stringify(el)).success(function(response){
+          $http.post(url,JSON.stringify(el)).success(function(response){
 
-    //         response.listId = listId;
-    //         $rootScope.productsAA = response;
+            response.listId = listId;
+            $rootScope.productsAA = response;
 
-    //       $location.path( "app/checkproduct");
+          $location.path( "app/checkproduct");
 
-              
-    //       });
-    //     }
-    //   }, function(error) {
-    //     console.log("An error happened -> " + error);
-    //  });
-    // };
+          });
+        }
+      }, function(error) {
+        console.log("An error happened -> " + error);
+     });
+    };
 
 
- $scope.scanBarcode = function(cateId,listId) {
+ // $scope.scanBarcode = function(cateId,listId) {
 
-    var response2 =  {
-        id: 36380,
-        brand: "Panzani",
-        name: "Coquillettes Tomates & Épinards",
-        unitName: "500 g",
-        url: "https://static.openfoodfacts.org/images/products/303/835/900/2465/front_fr.3.400.jpg"
-      };
+ //    var response2 =  {
+ //        id: 36380,
+ //        brand: "Panzani",
+ //        name: "Coquillettes Tomates & Épinards",
+ //        unitName: "500 g",
+ //        url: "https://static.openfoodfacts.org/images/products/303/835/900/2465/front_fr.3.400.jpg"
+ //      };
      
-     response2.listId = listId;
-      $rootScope.productsAA = response2;
+ //     response2.listId = listId;
+ //      $rootScope.productsAA = response2;
 
-       $location.path( "app/checkproduct");
-    } 
+ //       $location.path( "app/checkproduct");
+ //    } 
 
 
 })

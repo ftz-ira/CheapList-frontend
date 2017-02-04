@@ -1,13 +1,13 @@
 <ion-view view-title="Mes courses">
 <ion-content>
 <script>
-  location.reload(); 
+ 
 </script>
-<div class="list ">
+<div class="list" ng-controller="ShoptTimeCtrl">
    
   <div ng-repeat="element in listshoptime " class="row item item-thumbnail-left product-detail">
    
-      <div class="col col-50">
+      <div class="col col-70">
         <div>
           <h3> Marque : {{element.product.brand}}</h3>
           <p>Produit: {{element.product.name}}</p>
@@ -15,8 +15,9 @@
           <p>Quantité: {{element.productQuantity}}</p>
         </div>
       </div>
-      <div class="col col-35">
-        <input class="price" type="text" placeholder="{{element.product.shopProducts[0].price}} €" ng-model="price" size="5" value="{{element.product.shopProducts[0].price}}" />
+      <div class="col col-20">
+        <input class="price" ng-model="element.product.shopProducts[0].price" type="text" placeholder="{{element.product.shopProducts[0].price}} €" size="5" />
+        <button ng-click="setPrice(element.product.shopProducts[0].price,element.product.id,)" class="button button-balanced button-small">Valider</button>
       </div>
       <div class="col col-10 evenRow">
           <!-- <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)"  ng-checked="element.isInBasket == 'true'"  /> -->
