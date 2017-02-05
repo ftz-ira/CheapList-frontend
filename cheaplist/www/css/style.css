@@ -42,6 +42,7 @@ input[type=text]{
 	background-color: #E1E1E1;
   margin: 0;
   font-size: 23px;
+  text-align: right;
 }
 .shop-name{
   font-weight: bold;
@@ -49,7 +50,7 @@ input[type=text]{
 .list-name{
   font-weight: bold;
   color: #13baba;
-  font-size: 23px;
+  font-size: 18px;
 }
 .section-name .category-name{
   font-weight: bold;

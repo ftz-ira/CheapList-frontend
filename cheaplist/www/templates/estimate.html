@@ -1,13 +1,13 @@
 <ion-view view-title="Classement">
  <ion-content> 
 
- <div ng-controller="EstimateCtrl" ng-repeat="shop in shopList" class="list">
+ <div ng-controller="EstimateCtrl" ng-repeat="shop in shopList" class="list item item-thumbnail-left">
      <!-- <img ng-src="{{shop.urlImage}}"/>  -->
      <!-- <a ng-click="LinkShopList(listId, shop.idshop)"> -->
 
      <!-- id : {{shop.idshop}} -->
           <a ng-click="estimate()">
-               <div class=" row item item-thumbnail-left">
+               <div class=" row ">
                     <div class="col col-50"> 
                          
                                   {{shop.name}}<br>
@@ -15,14 +15,17 @@
                                    Eléments manquants : {{shop.missingelement}}
                          
                     </div>
-                    <div class="col col-25">
-                         Distance : <span class="distance">{{shop.distance | number:2}} km </span>
-                    </div>
+                    
+                   
+               </div>
+               <div class=" row">
+               <div class="col col-25">
+                         Distance : <span class="estimate-price">{{shop.distance | number:2}} km </span>
+                    </div>&nbsp;
                     <div class="col col-25 ">
                           Prix total : <span class="estimate-price">{{shop.totalprice | number:2}} €</span>
                          
                     </div>
-                   
                </div>
           </a>
           

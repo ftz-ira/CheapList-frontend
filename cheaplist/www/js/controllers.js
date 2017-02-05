@@ -220,11 +220,11 @@ angular.module('starter.controllers', [])
 
         var el = {
             price: newPrice
-         }
+         };
 
-          $http.patch(url,JSON.stringify(el)).success(function(repsonse){
+          $http.patch(url,JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(function(repsonse){
 
-          console.log(response);
+            console.log(response);
 
           },function(error){
             console.log(error);
@@ -271,24 +271,6 @@ angular.module('starter.controllers', [])
      });
     };
 
-
- // $scope.scanBarcode = function(cateId,listId) {
-
- //    var response2 =  {
- //        id: 36380,
- //        brand: "Panzani",
- //        name: "Coquillettes Tomates & Épinards",
- //        unitName: "500 g",
- //        url: "https://static.openfoodfacts.org/images/products/303/835/900/2465/front_fr.3.400.jpg"
- //      };
-     
- //     response2.listId = listId;
- //      $rootScope.productsAA = response2;
-
- //       $location.path( "app/checkproduct");
- //    } 
-
-
 })
 .controller('SaveProductCtrl',function(BASE_URL,$stateParams,$http,$scope,$location,$rootScope,$window){
 
@@ -333,15 +315,25 @@ angular.module('starter.controllers', [])
 
 .controller('ChoiceMode',function(){
 })
-.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading,$ionicModal){
+.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading,$ionicModal,$location){
 
     var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
 
     var geoloc = $cordovaGeolocation;
-    var posOptions = {timeout : 10000, enableHighAccuracy : false};
+    
+    var posOptions = {timeout : 50000, enableHighAccuracy : false};
+
+     function sortResults(response,prop, asc) {
+        response = response.sort(function(a, b) {
+            if (asc) {
+                return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+            } else {
+                return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+            }
+        });
+      }
   
     geoloc.getCurrentPosition(posOptions).then(function (position) {
-
 
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
@@ -351,12 +343,13 @@ angular.module('starter.controllers', [])
           lng: lng 
         };
 
-        $ionicLoading.show({ template:'Loading....', duration: 3000}).then(function(){
+        $ionicLoading.show({ template:'Loading....', duration: 900}).then(function(){
 
             if(el.lat != null && el.lng != null){
 
                 $http.post(url,JSON.stringify(el), {headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(function(response){
                     //$ionicBackdrop.release();
+                    sortResults(response,'totalprice',true);
                     $scope.shopList = response;
                    // console.log(response)
                 });
@@ -386,21 +379,8 @@ angular.module('starter.controllers', [])
             $scope.modal2.show();
           };
 
-          // Perform the login action when the user submits the login form
-          // $scope.doValidate = function() {
-          //   console.log('Doing login', $scope.loginData);
-
-          //   // Simulate a login delay. Remove this and replace with your login
-          //   // code if using a login system
-          //   $timeout(function() {
-          //     $scope.closeEstimate();
-          //   }, 1000);
-          // };
-      
-
       $scope.LinkShopList = function(listId, shopid){
 
-        console.log(listId, shopid);
 
         var url= BASE_URL.base+"/lists/"+listId;
 
@@ -416,11 +396,8 @@ angular.module('starter.controllers', [])
               
               $scope.modal2.hide();
 
-              // fermeture du modal
-              $location.path( "/#/app/homepage" );
-
-
             })
+           $location.path( "app/homepage" );
         };
 })
 

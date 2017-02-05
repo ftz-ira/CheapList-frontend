@@ -28,8 +28,10 @@
    
     <div class="col col-40">
       <div class="row">
-        <a class="button button-small button-balanced col btn-modifier" ng-href="#/app/sections/{{list.id}}">Modifier</a>
-        <a class="button button-small button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
+        
+        <a class="button button-small button-outline button-balanced col btn-modifier" ng-href="#/app/sections/{{list.id}}">Modifier</a>
+  
+        <a ng-if="list.shop.name" class="button button-small button-outline button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
       </div>
     </div>
 

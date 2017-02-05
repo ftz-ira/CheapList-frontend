@@ -2,6 +2,7 @@
 <ion-content>
 
 <ion-list ng-controller="ShoptTimeCtrl">
+
    
   <div ng-repeat="element in listshoptime " class="row item item-thumbnail-left">
    
@@ -12,7 +13,9 @@
           <p class="shop-name">Poids/volume: {{element.product.unitName}}</p>
           <p class="nb-product">Quantité: {{element.productQuantity}}</p>
         </div>
+            
       </div>
+
       
       <div class="col col-40">
            
@@ -45,23 +48,24 @@
            
            <div class="row">
               <span class="col col-100">
-                <button ng-click="setPrice(element.product.shopProducts[0].price,element.product.id)" class="button button-block button-balanced">Valider</button>
+                <button ng-click="setPrice(element.product.shopProducts[0].price,element.product.id,element.shoppingList.shop.id)" class="button button-outline button-block button-balanced">Valider</button>
               </span>     
            </div>
                 <!-- <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)"  ng-checked="element.isInBasket == 'true'"  /> -->
           
       </div>
+
   </div>
 </ion-list>
 
 <div class="row">
 
     <!-- <a class="button col button-energized" ng-click="scanBarcode()"> -->
-    <a class="button col button-energized" ng-href="#/app/selecCategory/{{listshoptime.listId}}">
+    <a class="col button button-outline button-energized" ng-href="#/app/selecCategory/{{listshoptime.listId}}">
    
        Nouveau produit
     </a>
-    <a class="button col button-assertive" ng-href="#/app/homepage">
+    <a class="col button button-outline button-assertive" ng-href="#/app/homepage">
         Fini
     </a>
 
