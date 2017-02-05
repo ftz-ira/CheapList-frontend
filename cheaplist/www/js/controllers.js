@@ -355,7 +355,7 @@ angular.module('starter.controllers', [])
 
             if(el.lat != null && el.lng != null){
 
-                $http.post(url,JSON.stringify(el)).success(function(response){
+                $http.post(url,JSON.stringify(el), {headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(function(response){
                     //$ionicBackdrop.release();
                     $scope.shopList = response;
                    // console.log(response)
