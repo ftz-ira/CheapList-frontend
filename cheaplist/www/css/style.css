@@ -30,16 +30,18 @@ input[type=checkbox]
   -moz-transform: scale(2); /* FF */
   -webkit-transform: scale(2); /* Safari and Chrome */
   -o-transform: scale(2); /* Opera */
-  padding: 10px;
+  /*padding: 10px;*/
 }
 
 /* Might want to wrap a span around your checkbox text */
-
+input[type=text]{
+  font-size: 23px;
+  font-weight: bold;
+}
 .price{
 	background-color: #E1E1E1;
-	width: 90%;
-	height: 90%;
-	font-size: 40px;
+  margin: 0;
+  font-size: 23px;
 }
 .shop-name{
   font-weight: bold;
@@ -73,4 +75,74 @@ input[type=checkbox]
 .btn-margin{
   margin: 2px;
 }
+.overF{
+  overflow: hidden;
+}
+.wordW{
+  word-wrap: break-word;
+}
+.euro{
+  color: #13baba;
+  font-size: 28px;
+
+}
+
+.ion-android-cart {
+  font-size: 56px;
+}
+
+.ion-ios-cart-outline {
+  font-size: 56px;
+}
+
+.ion-ios-cart{
+  font-size: 56px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

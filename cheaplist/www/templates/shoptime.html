@@ -5,7 +5,7 @@
    
   <div ng-repeat="element in listshoptime " class="row item item-thumbnail-left">
    
-      <div class="col col-70  product-detail">
+      <div class="col col-60  product-detail overF">
         <div>
           <h3 class="list-name"> Marque : {{element.product.brand}}</h3>
           <p class="shop-name">Produit: {{element.product.name}}</p>
@@ -14,14 +14,42 @@
         </div>
       </div>
       
-      <div class="col col-20">
-        <input class="price" ng-model="element.product.shopProducts[0].price" type="text" placeholder="{{element.product.shopProducts[0].price}} €" size="5" />
-        <button ng-click="setPrice(element.product.shopProducts[0].price,element.product.id)" class="button button-balanced button-small">Valider</button>
-      </div>
+      <div class="col col-40">
+           
+           <span class="row shoptime-check-cart">
+              
+              <span class="col col-90" ng-if="element.isInBasket == true ">
+                
+                <i class="ion-ios-cart"></i>
+                
+              </span>
+              <span class="col col-90" ng-if="element.isInBasket == false ">
 
-      <div class="col col-10 ">
-          <!-- <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)"  ng-checked="element.isInBasket == 'true'"  /> -->
-          <ion-checkbox ng-click="checkboxBasket(element.isInBasket,element.id)" ng-model="element.isInBasket">
+                <i class="ion-ios-cart-outline"></i>
+                
+              </span>
+              
+              <span class="col col-10">
+                <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)" ng-model="element.isInBasket">
+              </span>
+
+           </span>
+
+           <div class="row">
+              <span class="col col-90">
+                <input class="price" ng-model="element.product.shopProducts[0].price" type="text" placeholder="{{element.product.shopProducts[0].price}} " size="10"/>
+              </span>
+              <span class="col col-10 euro">€</span>
+              
+           </div>
+           
+           <div class="row">
+              <span class="col col-100">
+                <button ng-click="setPrice(element.product.shopProducts[0].price,element.product.id)" class="button button-block button-balanced">Valider</button>
+              </span>     
+           </div>
+                <!-- <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)"  ng-checked="element.isInBasket == 'true'"  /> -->
+          
       </div>
   </div>
 </ion-list>
@@ -31,7 +59,7 @@
     <!-- <a class="button col button-energized" ng-click="scanBarcode()"> -->
     <a class="button col button-energized" ng-href="#/app/selecCategory/{{listshoptime.listId}}">
    
-       Ajouter un nouveau produit
+       Nouveau produit
     </a>
     <a class="button col button-assertive" ng-href="#/app/homepage">
         Fini

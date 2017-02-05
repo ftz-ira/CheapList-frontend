@@ -185,10 +185,9 @@ angular.module('starter.controllers', [])
   var url = BASE_URL.base+'/lists/'+$stateParams.listId+'/shoptime/';
 
   $http.get(url).success(function(response){
-      response.listId = $stateParams.listId;
-     $rootScope.listshoptime= response;
-
-       //console.log(response);
+    
+    response.listId = $stateParams.listId;
+    $rootScope.listshoptime= response;
 
    },function(error){
     console.log(error);
@@ -203,7 +202,7 @@ angular.module('starter.controllers', [])
         isInBasket: checkbox
       }
 
-      $http.patch(url,JSON.stringify(el)).success(function(repsonse){
+      $http.patch(url,JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'} }).success(function(repsonse){
 
           console.log(response);
 
@@ -230,7 +229,6 @@ angular.module('starter.controllers', [])
           },function(error){
             console.log(error);
           });
-
 
     }
 })
