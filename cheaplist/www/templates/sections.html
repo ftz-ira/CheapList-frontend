@@ -1,26 +1,28 @@
 <ion-view view-title="Rayons" >
  <ion-content>
-   <div class="row" ng-controller="SectionsCtrl">
+   <div class="row" ng-controller="SectionsCtrl ">
 
-     <label class="item item-input col col-50" >
-       <input type="text" ng-model="listName" value="{{listName}}" placeholder="Nom de la liste de course">
-     </label>
+     <div class="item item-input col col-50" >
+       <input type="text" ng-model="listName" placeholder="Nom de la liste de course">
+     </div>
        {{ $sl.titre }}
-       <span class="col col-50">
+       <div class="col-50 btn-margin">
 
-         <span class="button button-small button-positive" ng-click="saveSectionListName()">Valider</span>
-         <span class="button button-small button-assertive" ng-click="clearSectionListName()">Effacer</span>
-       </span>
+         <span class="button button-outline button-positive" ng-click="saveSectionListName()">Valider</span>
+         <span class="button button-outline button-assertive" ng-click="clearSectionListName()">Effacer</span>
+       </div>
    </div>
 
 
 
-   <div class="item item-divider">divider</div>
+   <div class="item item-divider"></div>
+
+
      <a ng-repeat="section in sections" class="item item-thumbnail-left" ng-href="#/app/categories/{{section.id}}">
        <img ng-src="{{section.urlImage}}" />
-       <h2>{{section.name}}</h2>
+       <h2 class="section-name">{{section.name}}</h2>
        <h3>{{section.description}}</h3>
-       <h3>{{section.id}}</h3>
+       
      </a>
 
 <!-- <span bottom-nav></span> -->

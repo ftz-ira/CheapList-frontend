@@ -34,16 +34,43 @@ input[type=checkbox]
 }
 
 /* Might want to wrap a span around your checkbox text */
-.checkboxtext
-{
-  /* Checkbox text */
-  font-size: 110%;
-  display: inline;
-  
-}
-.pricei{
+
+.price{
 	background-color: #E1E1E1;
 	width: 90%;
 	height: 90%;
 	font-size: 40px;
 }
+.shop-name{
+  font-weight: bold;
+}
+.list-name{
+  font-weight: bold;
+  color: #13baba;
+  font-size: 23px;
+}
+.section-name .category-name{
+  font-weight: bold;
+  color: #13baba;
+  font-size: 23px;
+}
+.category-name{
+  font-weight: bold;
+  color: #13baba;
+  font-size: 23px;
+}
+.nb-product{
+  font-weight: bold;
+  font-style: italic;
+  color: orange;
+}
+.product-quantity{
+  font-weight: bold;
+  font-style: italic;
+  color: #13baba;
+  font-size: 28px;
+}
+.btn-margin{
+  margin: 2px;
+}
+

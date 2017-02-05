@@ -1,62 +1,41 @@
-
-
 <ion-view view-title="Mes Listes" >
- <ion-content>
+<ion-content>
 
 
-  <ion-list ng-controller="HomepageCtrl" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
-
- <!--  <ion-item ng-repeat="list in lists" class="item-thumbnail-left">
-
-    <h2>{{ list.id }}</h2>
-    <p>{{ list.name }}</p>
-    <ion-option-button class="button-positive" ng-click="share(list)"> Share </ion-option-button>
-    <ion-option-button class="button-info" ng-click="edit(list)">Edit</ion-option-button>
-    <ion-delete-button class="ion-minus-circled" ng-click="lists.splice($index, 1)"></ion-delete-button>
-    <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(list, $fromIndex, $toIndex)"></ion-reorder-button>
-
-  </ion-item>
-</ion-list> -->
-
-
-<div class="list" ng-controller="HomepageCtrl">
-
-
-<!-- <ion-list show-delete="shouldShowDelete">
-  <ion-item>
-    <ion-delete-button class="ion-minus-circled"></ion-delete-button>
-    Hello, list item!
-  </ion-item>
-</ion-list>
-<ion-toggle ng-model="shouldShowDelete">
-  Show Delete?
-</ion-toggle> -->
-
+<ion-list ng-controller="HomepageCtrl">
 
 <div ng-repeat="list in lists" class="row item item-thumbnail-left" >
 
-  <a class="col col-50">
-   <span>{{ list.id }}</span>
-   <span>{{ list.name }}</span>
-   <span>Nombre de produits :  {{ list.qty }}</span>
-   <span>{{ list.shop.name}}</span>
-   <span>{{ list.shop.address.streetName}}</span>
-   <span>{{ list.shop.address.city}}</span>
- </a>
+    <div class="col-60">
+      <div class="row">
+        <div class="col-75">
+         
+         <span class="list-name">{{ list.name }}</span>
+         <div class="col col-50">
+           
+           <span class="shop-name">{{ list.shop.name}}</span>
+         </div>
+         <div class="col col-50">
+           <span>{{ list.shop.address.streetName}}</span>
+           <span>{{ list.shop.address.city}}</span>
+          </div>
+          <div class="col col-50 nb-product">
+           <span>Nombre de produits :  {{ list.qty }}</span>
+         </div>
+        </div>
+       </div>
+       </div>
+   
+    <div class="col col-40">
+      <div class="row">
+        <a class="button button-small button-balanced col btn-modifier" ng-href="#/app/sections/{{list.id}}">Modifier</a>
+        <a class="button button-small button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
+      </div>
+    </div>
 
- <div class="col col-50">
-  <div class="row">
-    <a class="button button-small button-balanced col btn-modifier" ng-href="#/app/sections/{{list.id}}">Modifier</a>
-    <a class="button button-small button-energized col btn-voir" ng-href="#/app/shoptime/{{list.id}}">Voir</a>
-
- </div>
 </div>
-<hr>
 
-</div>
-</div>
-
-
+</ion-list>
 
 </ion-content>
 </ion-view>

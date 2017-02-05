@@ -21,10 +21,10 @@
      <p>Poid/volume: {{product.unitName}}</p>
      <p>id: {{product.id}}</p>
     </div>
-   <div class="" ng-model="product" ng-controller="ProductsCtrl as $p" >
+   <div ng-model="product" ng-controller="ProductsCtrl as $p" >
 
-     <div>
-       <span ><h2>Quantité : {{$p.userdata.getProductQuantity(listId,product.id)}}</h2></span>
+     <div >
+       <span ><h2 class="nb-product">Quantité : {{$p.userdata.getProductQuantity(listId,product.id)}}</h2></span>
      </div>
 
      <div class="button button-balanced button-small"  ng-click="addToList(($p.userdata.getProductQuantity(listId,product.id)+1),listId,product.id)"><i class="ion-chevron-up"></i>
