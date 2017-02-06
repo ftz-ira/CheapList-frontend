@@ -315,7 +315,7 @@ angular.module('starter.controllers', [])
 
 .controller('ChoiceMode',function(){
 })
-.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading,$ionicModal,$location){
+.controller('EstimateCtrl',function($rootScope,$scope, $stateParams,$http,BASE_URL,$cordovaGeolocation,$timeout,$ionicLoading,$ionicModal,$location,userData){
 
     var url = BASE_URL.base+'/lists/'+$rootScope.listId+'/';
 
@@ -357,10 +357,6 @@ angular.module('starter.controllers', [])
           });
       });
 
-     
-          // Form data for the login modal
-          //$scope.loginData = {}; 
-
           // Create the login modal that we will use later
           $ionicModal.fromTemplateUrl('templates/modal_Link_shop_to_list.html', {
             scope: $scope
@@ -379,7 +375,7 @@ angular.module('starter.controllers', [])
             $scope.modal2.show();
           };
 
-      $scope.LinkShopList = function(listId, shopid){
+         $scope.LinkShopList = function(listId, shopid){
 
 
         var url= BASE_URL.base+"/lists/"+listId;
@@ -391,13 +387,13 @@ angular.module('starter.controllers', [])
 
           $http.patch(url,JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(
             function(response){
-              
-              console.log(response);
-              
+                var listupdate = userData.getListById(listId);
+                listupdate.shop = response.shop;
               $scope.modal2.hide();
+                $location.path( "app/homepage" );
 
             })
-           $location.path( "/" );
+
         };
 })
 
