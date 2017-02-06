@@ -65,11 +65,14 @@ angular.module('starter.controllers', [])
  })
 })
 
-.controller('SectionsCtrl',function($scope,$http,$stateParams,$rootScope,BASE_URL,userData){
+.controller('SectionsCtrl',function(userData,$scope,$http,$stateParams,$rootScope,BASE_URL){
 
       // passage de l'id de liste pour ajouter les produits
-        
+
         $rootScope.listId = $stateParams.listId;
+        //var listName = $scope.listName;
+        var listupdate =userData.getListById($rootScope.listId);
+        $scope.listName = listupdate.name;
 
         var url = BASE_URL.base+'/sections';
         //console.log(url)
@@ -89,25 +92,26 @@ angular.module('starter.controllers', [])
 
       $scope.saveSectionListName =  function(){
 
-        var listName = userData.getListById($rootScope.listId).name;
-
-        if( (listName.length > 3) && (listName != undefined) ) {
+        if( ($scope.listName.length > 3) && ($scope.listName != undefined) ) {
 
           url2 = BASE_URL.base+"/lists/"+$rootScope.listId;
 
-             var el ={  
-                  name: listName
-               }
+             var el ={  
+                  name: $scope.listName
+               }
 
           $http.patch(url2,JSON.stringify(el)).success(function(response){
 
             if(response){
                 //sections = response;
                   //response;
-                  
-                 //$scope.listName = response.name;
-               var list = userData.getListById($rootScope.listId);
-               list.name = response.name;
+
+
+                  var listupdate =userData.getListById($rootScope.listId);
+                  listupdate.name = response.name;
+
+                  console.log(response);
+                  //console.log("list titre saved !");
 
                 }else{
                   console.log("fail");
@@ -118,10 +122,11 @@ angular.module('starter.controllers', [])
         }else{
           alert('vous devez remplire le nom de votre liste');
         }
-        
+
       };
       $scope.clearSectionListName =  function(){
-        $scope.listName = null;
+          var listupdate =userData.getListById($rootScope.listId);
+          listupdate.name = "";
       }
 })
 
