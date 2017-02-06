@@ -397,7 +397,7 @@ angular.module('starter.controllers', [])
               $scope.modal2.hide();
 
             })
-           $location.path( "app/homepage" );
+           $location.path( "/" );
         };
 })
 
