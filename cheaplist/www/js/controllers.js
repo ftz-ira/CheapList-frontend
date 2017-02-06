@@ -393,6 +393,17 @@ angular.module('starter.controllers', [])
             function(response){
                 var listupdate = userData.getListById(listId);
                 listupdate.shop = response.shop;
+
+                 let qty=0;
+                  for(var l of listupdate.listProducts){
+
+                    qty += l.productQuantity;
+
+                  }
+
+                  listupdate.qty = qty;
+
+
               $scope.modal2.hide();
                 $location.path( "app/homepage" );
 
