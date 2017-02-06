@@ -103,7 +103,15 @@ input[type=text]{
 .estimate-price{
  font-size: 15px; 
  color: #D72020;
+ text-align: right;
 }
+
+.estimate-km{
+ font-size: 15px; 
+ color: #D72020;
+ text-align: left;
+}
+
 
 
 

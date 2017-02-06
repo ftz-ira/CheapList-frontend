@@ -325,7 +325,7 @@ angular.module('starter.controllers', [])
 
     var geoloc = $cordovaGeolocation;
     
-    var posOptions = {timeout : 50000, enableHighAccuracy : false};
+    var posOptions = {timeout : 90000, enableHighAccuracy : false};
 
      function sortResults(response,prop, asc) {
         response = response.sort(function(a, b) {
@@ -347,7 +347,7 @@ angular.module('starter.controllers', [])
           lng: lng 
         };
 
-        $ionicLoading.show({ template:'Loading....', duration: 900}).then(function(){
+        $ionicLoading.show({ template:'Loading....', duration: 5000}).then(function(){
 
             if(el.lat != null && el.lng != null){
 
@@ -406,7 +406,7 @@ angular.module('starter.controllers', [])
 
                   listupdate.qty = qty;
 
-              $scope.modal2.hide();
+                $scope.modal2.hide();
                 $location.path( "app/homepage" );
 
             })
