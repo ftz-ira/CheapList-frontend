@@ -16,11 +16,13 @@ a {
 }
 .btn-voir{
 	margin: 5px;
+  font-size: 2vw;
 	
 }
 
 .btn-modifier{
 	margin: 5px;
+  font-size: 2vw;
 }
 
 input[type=checkbox]

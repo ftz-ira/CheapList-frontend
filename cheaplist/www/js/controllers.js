@@ -403,7 +403,6 @@ angular.module('starter.controllers', [])
 
                   listupdate.qty = qty;
 
-
               $scope.modal2.hide();
                 $location.path( "app/homepage" );
 
