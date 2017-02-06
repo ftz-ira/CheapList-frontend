@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
  })
 })
 
-.controller('SectionsCtrl',function($scope,$http,$stateParams,$rootScope,BASE_URL){
+.controller('SectionsCtrl',function($scope,$http,$stateParams,$rootScope,BASE_URL,userData){
 
       // passage de l'id de liste pour ajouter les produits
         
@@ -89,7 +89,7 @@ angular.module('starter.controllers', [])
 
       $scope.saveSectionListName =  function(){
 
-        var listName = $scope.listName;
+        var listName = userData.getListById($rootScope.listId).name;
 
         if( (listName.length > 3) && (listName != undefined) ) {
 
@@ -105,10 +105,9 @@ angular.module('starter.controllers', [])
                 //sections = response;
                   //response;
                   
-                  $scope.listName = response.name;
-
-                  //console.log(response);
-                  //console.log("list titre saved !");
+                 //$scope.listName = response.name;
+               var list = userData.getListById($rootScope.listId);
+               list.name = response.name;
 
                 }else{
                   console.log("fail");
