@@ -21,25 +21,28 @@
            
            <span class="row shoptime-check-cart">
               
-              <span class="col col-90" ng-if="element.isInBasket == true ">
+              <span class="col col-50" ng-if="element.isInBasket == true ">
                 
                 <i class="ion-ios-cart"></i>
                 
               </span>
-              <span class="col col-90" ng-if="element.isInBasket == false ">
+              <span class="col col-50" ng-if="element.isInBasket == false ">
 
                 <i class="ion-ios-cart-outline"></i>
                 
               </span>
               
-              <span class="col col-10">
-                <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)" ng-model="element.isInBasket">
+              <span class="col col-50">
+                <label class="checkbox">
+                  <input type="checkbox" ng-click="checkboxBasket(element.isInBasket,element.id)" ng-model="element.isInBasket" />
+                </label>
               </span>
 
            </span>
+           <hr>
 
            <div class="row">
-              <span class="col col-90">
+              <span class="col col-50">
                 <input class="price" ng-model="element.product.shopProducts[0].price" type="text" placeholder="{{element.product.shopProducts[0].price}} " size="10"/>
               </span>
               <span class="col col-10 euro">€</span>

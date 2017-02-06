@@ -25,15 +25,6 @@ a {
   font-size: 2vw;
 }
 
-input[type=checkbox]
-{
-  /* Double-sized Checkboxes */
-  -ms-transform: scale(2); /* IE */
-  -moz-transform: scale(2); /* FF */
-  -webkit-transform: scale(2); /* Safari and Chrome */
-  -o-transform: scale(2); /* Opera */
-  /*padding: 10px;*/
-}
 
 /* Might want to wrap a span around your checkbox text */
 input[type=text]{
@@ -44,7 +35,7 @@ input[type=text]{
 	background-color: #E1E1E1;
   margin: 0;
   font-size: 23px;
-  text-align: right;
+  text-align: center;
 }
 .shop-name{
   font-weight: bold;
@@ -90,6 +81,7 @@ input[type=text]{
 .euro{
   color: #13baba;
   font-size: 28px;
+  margin: auto;
 
 }
 

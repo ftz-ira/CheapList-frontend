@@ -391,10 +391,13 @@ angular.module('starter.controllers', [])
 
           $http.patch(url,JSON.stringify(el),{headers: {'Content-Type': 'application/json','Accept': 'application/json'}}).success(
             function(response){
+                
                 var listupdate = userData.getListById(listId);
+
                 listupdate.shop = response.shop;
 
                  let qty=0;
+
                   for(var l of listupdate.listProducts){
 
                     qty += l.productQuantity;
