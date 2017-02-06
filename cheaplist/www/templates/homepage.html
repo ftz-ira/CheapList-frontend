@@ -6,7 +6,7 @@
 
 <div ng-repeat="list in lists" class="row item item-thumbnail-left overF" >
 
-    <div class="col-60">
+    <div class="col-60 wordW">
       <div class="row">
         <div class="col-75">
          
@@ -16,8 +16,8 @@
            <span class="shop-name">{{ list.shop.name}}</span>
          </div>
          <div class="col col-50">
-           <span>{{ list.shop.address.streetName}}</span>
-           <span>{{ list.shop.address.city}}</span>
+           <span class="wordW">{{ list.shop.address.streetName}}</span>
+           <span class="wordW">{{ list.shop.address.city}}</span>
           </div>
           <div class="col col-50 nb-product">
            <span>Nombre de produits :  {{ list.qty }}</span>

@@ -81,6 +81,9 @@ input[type=text]{
 }
 .wordW{
   word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+
 }
 .euro{
   color: #13baba;
