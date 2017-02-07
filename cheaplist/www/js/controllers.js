@@ -43,7 +43,7 @@ angular.module('starter.controllers', [])
 
 .controller('HomepageCtrl', function($scope, $http, $rootScope, userData,BASE_URL) {
 
- url = BASE_URL.base+'/members/69/lists/';
+ url = BASE_URL.base+'/members/71/lists/';
 
  $http.get(url).success(function(response) {
 
