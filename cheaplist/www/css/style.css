@@ -111,6 +111,9 @@ input[type=text]{
  color: #D72020;
  text-align: left;
 }
+.missing-element{
+  color: #D72020;
+}
 
 
 
